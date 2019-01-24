@@ -56,11 +56,11 @@ export class UploadImageComponent implements OnInit {
       }
       for (let i = 0; i < results.length; i++) {
         let fileUri;
-        if (this.platform.is('android')) {
-          fileUri = (<any>window).Ionic.WebView.convertFileSrc(results[i]);
-        } else {
-          fileUri = results[i];
-        }
+        // if (this.platform.is('android')) {
+        fileUri = (<any>window).Ionic.WebView.convertFileSrc(results[i]);
+        // } else {
+        //   fileUri = results[i];
+        // }
         this.uploadImage(fileUri).then((uploadImageData) => {
           this.url.emit(uploadImageData);
         }, (uploadImageError) => {
@@ -74,7 +74,25 @@ export class UploadImageComponent implements OnInit {
   }
 
   onCamera() {
-    alert('onCamera');
+    const options: CameraOptions = {
+      quality: 70,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      targetWidth: 900
+    };
+
+    this.camera.getPicture(options).then((imageData) => {
+      const fileUri = (<any>window).Ionic.WebView.convertFileSrc(imageData);
+      this.uploadImage(fileUri).then((uploadImageData) => {
+        this.url.emit(uploadImageData);
+      }, (uploadImageError) => {
+        // console.log(uploadImageError);
+        alert('Upload image err: ' + JSON.stringify(uploadImageError));
+      });
+    }, (err) => {
+      alert(err);
+    });
   }
 
   uploadImage(imageString): Promise<any> {
@@ -84,7 +102,7 @@ export class UploadImageComponent implements OnInit {
       // this.loading.onLoading();
       const storageRef = firebase.storage().ref();
       const filename = Math.floor((Date.now() / 1000) + new Date().getUTCMilliseconds());
-      const imageRef = storageRef.child(`images/${filename}.png`);
+      const imageRef = storageRef.child(`images/uploads/${filename}.png`);
       let uploadTask: any;
       const metadata = {
         contentType: 'image/png',
@@ -113,10 +131,11 @@ export class UploadImageComponent implements OnInit {
             // this.loading.dismiss();
           },
           (success) => {
-            resolve(uploadTask.snapshot.downloadURL);
-            // this.loading.dismiss();
+            uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+              resolve(uploadTask.snapshot.downloadURL);
+              // this.loading.dismiss();
+            });
           });
-
       };
 
       xhr.send();

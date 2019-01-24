@@ -25,6 +25,6 @@ export class SiginPage implements OnInit {
     }
   }
   clickCancel() {
-    this.navCtrl.navigateForward('login');
+    this.navCtrl.navigateForward('');
   }
 }

@@ -16,7 +16,7 @@ export class RegisterPage implements OnInit {
     console.log("of");
   }
   cancel() {
-    this.navCtrl.navigateForward('login');
+    this.navCtrl.navigateForward('');
   }
   onUrlCallback(e) {
     console.log(e);

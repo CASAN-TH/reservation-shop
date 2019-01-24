@@ -1,5 +1,7 @@
 {
   "name": "reservationShop",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
