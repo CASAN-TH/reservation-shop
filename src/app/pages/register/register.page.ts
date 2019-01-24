@@ -11,5 +11,10 @@ export class RegisterPage implements OnInit {
 
   ngOnInit() {
   }
-
+  confirm(){
+    console.log("of");
+  }
+  cancel(){
+    console.log("ping ping ping");
+  }
 }
