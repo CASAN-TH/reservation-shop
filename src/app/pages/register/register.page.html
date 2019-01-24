@@ -1,21 +1,16 @@
 <ion-header>
   <ion-toolbar>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button>
-            <ion-icon name="arrow-back"></ion-icon>
-        </ion-back-button>
-        
-      </ion-buttons>
-      <ion-title>Register</ion-title>
-    </ion-toolbar>
-
+    <ion-title>Register</ion-title>
   </ion-toolbar>
+
 </ion-header>
 
 <ion-content padding>
-  <img class="center" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpFRsqHC9ffOTNy2cayoWax5DkvOSq7EqH6XNx0OZFI8IWvMK3"
-    alt="อัพโหลดรูปโปรไฟล์">
+  <app-upload-image (url)="onUrlCallback($event)">
+    <img class="center" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpFRsqHC9ffOTNy2cayoWax5DkvOSq7EqH6XNx0OZFI8IWvMK3"
+      alt="อัพโหลดรูปโปรไฟล์">
+  </app-upload-image>
+
   <ion-item>
     <ion-textarea class="textcenter" placeholder="อัพโหลดรูปโปรไฟล์"></ion-textarea>
   </ion-item>
@@ -40,16 +35,17 @@
     <ion-label position="email">E-mail :</ion-label>
     <ion-input></ion-input>
   </ion-item>
- 
-<div><ion-row>
-    <ion-col size="6">
+
+  <div>
+    <ion-row>
+      <ion-col size="6">
         <ion-button expand="full" (click)="confirm()">confirm</ion-button>
-    </ion-col>
-    <ion-col size="6">
-      <ion-button color="danger" expand="full" (click)="cancel()">cancel</ion-button>
-    </ion-col>
-  </ion-row>
-</div>
-  
+      </ion-col>
+      <ion-col size="6">
+        <ion-button color="danger" expand="full" (click)="cancel()">cancel</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+
 
 </ion-content>
