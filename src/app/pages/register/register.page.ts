@@ -12,30 +12,35 @@ export class RegisterPage implements OnInit {
 
   constructor(
     public navCtrl: NavController,
-    public authService:AuthService
-    ) { }
+    public authService: AuthService
+  ) { }
 
-  username:any='';
-  password:any='';
-  firstname:any='';
-  lastname:any='';
-  email:any='';
+  username: any = '';
+  password: any = '';
+  firstname: any = '';
+  lastname: any = '';
+  email: any = '';
 
   ngOnInit() {
   }
 
-    
-  confirm() {
-    let body={
-      username:this.username,
-      password:this.password,
-      firstName:this.firstname,
-      lastName:this.lastname,
-      email:this.email    
+
+  async confirm() {
+    let body = {
+      username: this.username,
+      password: this.password,
+      firstname: this.firstname,
+      lastname: this.lastname,
+      email: this.email,
+      ref1: "1",
+      ref2: "1"
     }
     console.log(body);
 
-  //this.authService.register(body);
+    let res: any = await this.authService.register(body);
+    console.log(res);
+    window.localStorage.setItem(environment.apiURL + '@token', res.token);
+    //this.navCtrl.navigateForward("")
 
   }
   cancel() {
