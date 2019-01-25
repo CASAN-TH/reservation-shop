@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
 import { NavController } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -9,14 +10,33 @@ import { NavController } from '@ionic/angular';
 })
 export class RegisterPage implements OnInit {
 
-  constructor(public navCtrl: NavController, ) { }
+  constructor(
+    public navCtrl: NavController,
+    public authService:AuthService
+    ) { }
+
+  username:any='';
+  password:any='';
+  firstname:any='';
+  lastname:any='';
+  email:any='';
 
   ngOnInit() {
   }
 
     
   confirm() {
-    console.log("of");
+    let body={
+      username:this.username,
+      password:this.password,
+      firstName:this.firstname,
+      lastName:this.lastname,
+      email:this.email    
+    }
+    console.log(body);
+
+  //this.authService.register(body);
+
   }
   cancel() {
     this.navCtrl.navigateForward('');

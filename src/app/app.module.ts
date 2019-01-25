@@ -10,7 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +19,7 @@ import { Camera } from '@ionic-native/camera/ngx';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    HttpClientModule
    
   ],
   providers: [
