@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -8,15 +9,19 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class RegisterPage implements OnInit {
 
-  constructor() { }
+  constructor(public navCtrl: NavController, ) { }
 
   ngOnInit() {
   }
-  confirm(){
+
     
+  confirm() {
     console.log("of");
   }
-  cancel(){
-    console.log("ping ping ping");
+  cancel() {
+    this.navCtrl.navigateForward('');
+  }
+  onUrlCallback(e) {
+    console.log(e);
   }
 }

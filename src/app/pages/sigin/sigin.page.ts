@@ -17,9 +17,14 @@ export class SiginPage implements OnInit {
   ngOnInit() {
   }
   clickLogin() {
+    try {
+      console.log(this.sigin);
 
+    } catch (error) {
+
+    }
   }
   clickCancel() {
-    this.navCtrl.navigateForward('login');
+    this.navCtrl.navigateForward('');
   }
 }

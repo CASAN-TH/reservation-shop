@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { QueueListComponent } from './queue-list/queue-list.component';
+import { UploadImageComponent } from './upload-image/upload-image.component';
 
 
 @NgModule({
@@ -12,10 +13,12 @@ import { QueueListComponent } from './queue-list/queue-list.component';
         IonicModule.forRoot(),
     ],
     declarations: [
-        QueueListComponent
+        QueueListComponent,
+        UploadImageComponent
     ],
     exports: [
-        QueueListComponent
+        QueueListComponent,
+        UploadImageComponent
     ],
     entryComponents: [],
 })
