@@ -7,7 +7,9 @@
 
 <ion-content padding>
   <app-upload-image (url)="onUrlCallback($event)">
-    <img class="center" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpFRsqHC9ffOTNy2cayoWax5DkvOSq7EqH6XNx0OZFI8IWvMK3"
+    <img *ngIf="!image" class="center" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpFRsqHC9ffOTNy2cayoWax5DkvOSq7EqH6XNx0OZFI8IWvMK3"
+      alt="อัพโหลดรูปโปรไฟล์">
+    <img *ngIf="image" class="center" [src]="image"
       alt="อัพโหลดรูปโปรไฟล์">
   </app-upload-image>
 
@@ -20,20 +22,20 @@
   </ion-item>
   <ion-item>
     <ion-label position=" password">Password :</ion-label>
-    <ion-input [(ngModel)]="password" ></ion-input>
+    <ion-input [(ngModel)]="password"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label position=" firstName"> Firstname :</ion-label>
-    <ion-input [(ngModel)]="firstname" ></ion-input>
+    <ion-input [(ngModel)]="firstname"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position=" lastName"> Lastname :</ion-label>
-    <ion-input [(ngModel)]="lastname" ></ion-input>
+    <ion-input [(ngModel)]="lastname"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="email">E-mail :</ion-label>
-    <ion-input [(ngModel)]="email" ></ion-input>
+    <ion-input [(ngModel)]="email"></ion-input>
   </ion-item>
 
   <div>

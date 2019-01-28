@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-
+  image: any;
   constructor(
     public navCtrl: NavController,
     public authService: AuthService
@@ -47,6 +47,7 @@ export class RegisterPage implements OnInit {
     this.navCtrl.navigateForward('');
   }
   onUrlCallback(e) {
-    console.log(e);
+    this.image = e;
+    alert(this.image);
   }
 }

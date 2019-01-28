@@ -30,7 +30,8 @@ export class SiginPage implements OnInit {
 
 
     } catch (error) {
-      console.log('error');
+      console.log(error);
+
 
     }
   }

@@ -63,6 +63,7 @@ export class UploadImageComponent implements OnInit {
         // }
         this.uploadImage(fileUri).then((uploadImageData) => {
           this.url.emit(uploadImageData);
+          // alert('upload success' + JSON.stringify(this.url));
         }, (uploadImageError) => {
           console.log(uploadImageError);
           alert('Upload image err: ' + JSON.stringify(uploadImageError));
@@ -102,7 +103,7 @@ export class UploadImageComponent implements OnInit {
       // this.loading.onLoading();
       const storageRef = firebase.storage().ref();
       const filename = Math.floor((Date.now() / 1000) + new Date().getUTCMilliseconds());
-      const imageRef = storageRef.child(`images/uploads/${filename}.png`);
+      const imageRef = storageRef.child(`images/upload/${filename}.png`);
       let uploadTask: any;
       const metadata = {
         contentType: 'image/png',
