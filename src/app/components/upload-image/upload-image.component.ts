@@ -12,6 +12,7 @@ import * as firebase from 'firebase';
 })
 export class UploadImageComponent implements OnInit {
   @Output() url: EventEmitter<any> = new EventEmitter<any>();
+  // @Output() imageFirebase: EventEmitter<any> = new EventEmitter<any>();
   image: any;
   constructor(
     private actionSheetController: ActionSheetController,
@@ -62,6 +63,8 @@ export class UploadImageComponent implements OnInit {
         //   fileUri = results[i];
         // }
         this.uploadImage(fileUri).then((uploadImageData) => {
+          // this.imageFirebase.emit(uploadImageData)
+          alert(uploadImageData)
           this.url.emit(uploadImageData);
           alert('upload success' + JSON.stringify(uploadImageData));
         }, (uploadImageError) => {
@@ -133,7 +136,8 @@ export class UploadImageComponent implements OnInit {
           },
           (success) => {
             uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
-              resolve(uploadTask.snapshot.downloadURL);
+              alert(downloadURL);
+              resolve(downloadURL);
               // this.loading.dismiss();
             });
           });
