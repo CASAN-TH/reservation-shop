@@ -64,9 +64,9 @@ export class UploadImageComponent implements OnInit {
         // }
         this.uploadImage(fileUri).then((uploadImageData) => {
           // this.imageFirebase.emit(uploadImageData)
-          alert(uploadImageData)
+          // alert(uploadImageData)
           this.url.emit(uploadImageData);
-          alert('upload success' + JSON.stringify(uploadImageData));
+          // alert('upload success' + JSON.stringify(uploadImageData));
         }, (uploadImageError) => {
           console.log(uploadImageError);
           alert('Upload image err: ' + JSON.stringify(uploadImageError));
@@ -136,7 +136,7 @@ export class UploadImageComponent implements OnInit {
           },
           (success) => {
             uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
-              alert(downloadURL);
+              // alert(downloadURL);
               resolve(downloadURL);
               // this.loading.dismiss();
             });

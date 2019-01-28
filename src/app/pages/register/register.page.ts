@@ -47,9 +47,9 @@ export class RegisterPage implements OnInit {
     this.navCtrl.navigateForward('');
   }
   onUrlCallback(e) {
-    alert("image Firebase : >>  " + e)
+    // alert("image Firebase : >>  " + e)
     this.image = e;
-    alert(this.image);
+    // alert(this.image);
   }
 
 
