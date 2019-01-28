@@ -1,5 +1,7 @@
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-sigin',
@@ -12,15 +14,23 @@ export class SiginPage implements OnInit {
     password: ''
   };
 
-  constructor(public navCtrl: NavController, ) { }
+  constructor(
+    public navCtrl: NavController,
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
   }
-  clickLogin() {
+  async  clickLogin() {
     try {
-      console.log(this.sigin);
+      const res: any = await this.authService.sigin(this.sigin);
+      window.localStorage.setItem(environment.apiURL + '@token', res.token);
+      console.log(res);
+      // this.navCtrl.navigateForward("")
+
 
     } catch (error) {
+      console.log('error');
 
     }
   }
