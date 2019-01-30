@@ -32,8 +32,7 @@ export class RegisterPage implements OnInit {
       firstname: this.firstname,
       lastname: this.lastname,
       email: this.email,
-      ref1: "1",
-      ref2: "1"
+      profileImageURL: this.image,
     }
     console.log(body);
 
@@ -47,9 +46,7 @@ export class RegisterPage implements OnInit {
     this.navCtrl.navigateForward('');
   }
   onUrlCallback(e) {
-    // alert("image Firebase : >>  " + e)
     this.image = e;
-    // alert(this.image);
   }
 
 
