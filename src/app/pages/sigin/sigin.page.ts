@@ -26,7 +26,7 @@ export class SiginPage implements OnInit {
       const res: any = await this.authService.sigin(this.sigin);
       window.localStorage.setItem(environment.apiURL + '@token', res.token);
       console.log(res);
-      // this.navCtrl.navigateForward("")
+      this.navCtrl.navigateForward("queue-list");
 
 
     } catch (error) {
