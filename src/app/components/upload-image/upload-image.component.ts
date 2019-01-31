@@ -12,6 +12,7 @@ import * as firebase from 'firebase';
 })
 export class UploadImageComponent implements OnInit {
   @Output() url: EventEmitter<any> = new EventEmitter<any>();
+  // @Output() imageFirebase: EventEmitter<any> = new EventEmitter<any>();
   image: any;
   constructor(
     private actionSheetController: ActionSheetController,
@@ -62,7 +63,10 @@ export class UploadImageComponent implements OnInit {
         //   fileUri = results[i];
         // }
         this.uploadImage(fileUri).then((uploadImageData) => {
+          // this.imageFirebase.emit(uploadImageData)
+          // alert(uploadImageData)
           this.url.emit(uploadImageData);
+          // alert('upload success' + JSON.stringify(uploadImageData));
         }, (uploadImageError) => {
           console.log(uploadImageError);
           alert('Upload image err: ' + JSON.stringify(uploadImageError));
@@ -102,7 +106,7 @@ export class UploadImageComponent implements OnInit {
       // this.loading.onLoading();
       const storageRef = firebase.storage().ref();
       const filename = Math.floor((Date.now() / 1000) + new Date().getUTCMilliseconds());
-      const imageRef = storageRef.child(`images/uploads/${filename}.png`);
+      const imageRef = storageRef.child(`images/upload/${filename}.png`);
       let uploadTask: any;
       const metadata = {
         contentType: 'image/png',
@@ -132,7 +136,8 @@ export class UploadImageComponent implements OnInit {
           },
           (success) => {
             uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
-              resolve(uploadTask.snapshot.downloadURL);
+              // alert(downloadURL);
+              resolve(downloadURL);
               // this.loading.dismiss();
             });
           });

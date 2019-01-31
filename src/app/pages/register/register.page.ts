@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-
+  image: any;
   constructor(
     public navCtrl: NavController,
     public authService: AuthService
@@ -32,19 +32,22 @@ export class RegisterPage implements OnInit {
       firstname: this.firstname,
       lastname: this.lastname,
       email: this.email,
+      profileImageURL: this.image,
     }
     console.log(body);
 
     let res: any = await this.authService.register(body);
     console.log(res);
     window.localStorage.setItem(environment.apiURL + '@token', res.token);
-    //this.navCtrl.navigateForward("")
+    this.navCtrl.navigateForward("queue-list");
 
   }
   cancel() {
     this.navCtrl.navigateForward('');
   }
   onUrlCallback(e) {
-    console.log(e);
+    this.image = e;
   }
+
+
 }
