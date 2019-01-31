@@ -9,13 +9,14 @@
     alt="">
   <ion-item>
     <ion-label position="fixed">Username</ion-label>
-    <ion-input   [(ngModel)]="sigin.username"></ion-input>
+    <ion-input   [(ngModel)]="sigin.username" placeholder="Username"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="fixed" >Password</ion-label>
-    <ion-input [(ngModel)]="sigin.password"></ion-input>
+    <ion-input [(ngModel)]="sigin.password"  placeholder="Password" type="password" id="pass" name="password"
+    minlength="8" required></ion-input>
   </ion-item>
-  <ion-button mode="ios" expand="full" shape="round" (click)="clickLogin()">Login</ion-button>
+  <ion-button [disabled]="!sigin.username||!sigin.password" mode="ios" expand="full" shape="round" (click)="clickLogin()">Login</ion-button>
   <ion-button mode="ios" expand="full" shape="round" (click)="clickCancel()">Cancel</ion-button>
 
 </ion-content>

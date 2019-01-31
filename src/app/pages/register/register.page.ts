@@ -32,8 +32,6 @@ export class RegisterPage implements OnInit {
       firstname: this.firstname,
       lastname: this.lastname,
       email: this.email,
-      ref1: "1",
-      ref2: "1"
     }
     console.log(body);
 

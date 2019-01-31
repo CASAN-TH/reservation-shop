@@ -16,30 +16,32 @@
   </ion-item>
   <ion-item>
     <ion-label position="username">Username :</ion-label>
-    <ion-input [(ngModel)]="username"></ion-input>
+    <ion-input [(ngModel)]="username" placeholder="Username"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position=" password">Password :</ion-label>
-    <ion-input [(ngModel)]="password" ></ion-input>
+    <ion-input [(ngModel)]="password" type="password" id="pass" name="password"
+    minlength="8" required placeholder="Password" ></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label position=" firstName"> Firstname :</ion-label>
-    <ion-input [(ngModel)]="firstname" ></ion-input>
+    <ion-input [(ngModel)]="firstname" placeholder="First name" ></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position=" lastName"> Lastname :</ion-label>
-    <ion-input [(ngModel)]="lastname" ></ion-input>
+    <ion-input [(ngModel)]="lastname" placeholder="Last name" ></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="email">E-mail :</ion-label>
-    <ion-input [(ngModel)]="email" ></ion-input>
+    <ion-label position="email" >E-mail :</ion-label>
+
+    <ion-input [(ngModel)]="email" type="email" placeholder="example@konlor.com" ></ion-input>
   </ion-item>
 
   <div>
     <ion-row>
       <ion-col size="6">
-        <ion-button expand="full" (click)="confirm()">confirm</ion-button>
+        <ion-button expand="full" [disabled]="!username ||!password||!firstname||!lastname||!email" (click)="confirm()">confirm</ion-button>
       </ion-col>
       <ion-col size="6">
         <ion-button color="danger" expand="full" (click)="cancel()">cancel</ion-button>
