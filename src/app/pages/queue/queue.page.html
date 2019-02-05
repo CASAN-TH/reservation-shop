@@ -1,0 +1,9 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>queue</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-queue-list *ngIf="dataQueue && dataQueue.data" [dataQueue]="dataQueue.data"></app-queue-list>
+</ion-content>

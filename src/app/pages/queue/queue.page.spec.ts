@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { QueueListPage } from './queue-list.page';
+import { QueuePage } from './queue.page';
 
-describe('QueueListPage', () => {
-  let component: QueueListPage;
-  let fixture: ComponentFixture<QueueListPage>;
+describe('QueuePage', () => {
+  let component: QueuePage;
+  let fixture: ComponentFixture<QueuePage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ QueueListPage ],
+      declarations: [ QueuePage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(QueueListPage);
+    fixture = TestBed.createComponent(QueuePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

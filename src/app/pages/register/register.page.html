@@ -6,6 +6,7 @@
 </ion-header>
 
 <ion-content padding>
+  <app-queue-list></app-queue-list>
   <app-upload-image (url)="onUrlCallback($event)" >
     <img *ngIf="!image" class="center" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpFRsqHC9ffOTNy2cayoWax5DkvOSq7EqH6XNx0OZFI8IWvMK3"
       alt="อัพโหลดรูปโปรไฟล์">

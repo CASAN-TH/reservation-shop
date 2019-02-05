@@ -5,12 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { QueueListPage } from './queue-list.page';
+import { QueuePage } from './queue.page';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 const routes: Routes = [
   {
     path: '',
-    component: QueueListPage
+    component: QueuePage
   }
 ];
 
@@ -19,8 +20,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    ComponentsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [QueueListPage]
+  declarations: [QueuePage]
 })
-export class QueueListPageModule {}
+export class QueuePageModule {}
