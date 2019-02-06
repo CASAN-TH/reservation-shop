@@ -44,13 +44,36 @@ export class QueueListComponent implements OnInit {
 
     await alert.present();
   }
+  async  onPass() {
+    const alert = await this.alertController.create({
+      header: 'Radio',
+      inputs: [
+        {
+          name: 'มาไม่ทัน',
+          type: 'radio',
+          label: 'มาไม่ทัน',
+          value: 'มาไม่ทัน',
+          checked: true
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'Ok',
+          handler: () => {
+            console.log('Confirm Ok');
+          }
+        }
+      ]
+    });
 
-  // async onUpdate() {
-  //   const alert = await this.alertController.create({
-  //     message: 'สินค้าบางรายในรถเข็นของคุณอยู่ในช่วงเวลาการจัดรายการลดราคาซึ่งจะถูกจำกัดจำนวนของการสั่งซื้อต่อรายการ กรุณาเปลี่ยนแปลงจำนวนการสั่งซื้อและลองใหม่อีกครั้ง',
-  //     buttons: ['ตกลง']
-  //   });
-  //   return await alert.present();
-  // }
+    await alert.present();
+  }
 
 }
