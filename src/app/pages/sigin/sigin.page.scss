@@ -1,0 +1,37 @@
+ion-list {
+    padding: 6px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    --ion-background-color: white;
+    box-shadow: 2px 1px 39px -12px rgba(49, 41, 41, 0.5);
+}
+
+.btn-login {
+    --background: #FF6969;
+    margin-top: 20px !important;
+    margin: 10px;
+}
+
+.icon-login {
+    position: absolute;
+    right: 13px;
+    font-size: 34px;
+}
+
+ion-label {
+    margin-top: 0px;
+}
+
+.mg-regis {
+    margin: 40px;
+    margin-top: 75px;
+}
+
+.font-gray {
+    color: grey;
+}
+
+.font-red {
+    color: #ef9696;
+}

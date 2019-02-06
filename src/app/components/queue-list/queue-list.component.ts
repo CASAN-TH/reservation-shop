@@ -44,9 +44,9 @@ export class QueueListComponent implements OnInit {
 
     await alert.present();
   }
-  async  onPass() {
+  async onPass(item) {
     const alert = await this.alertController.create({
-      header: 'Radio',
+      header: 'หมายเหตุ',
       inputs: [
         {
           name: 'มาไม่ทัน',
@@ -58,16 +58,21 @@ export class QueueListComponent implements OnInit {
       ],
       buttons: [
         {
-          text: 'Cancel',
+          text: 'ยกเลิก',
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
             console.log('Confirm Cancel');
           }
         }, {
-          text: 'Ok',
-          handler: () => {
-            console.log('Confirm Ok');
+          text: 'ตกลง',
+          handler: (res) => {
+            let dataQueu = {
+              _id: item._id,
+              remark: res
+            }
+            this.queueService.queueUpdate(dataQueu);
+            // console.log(res)
           }
         }
       ]
