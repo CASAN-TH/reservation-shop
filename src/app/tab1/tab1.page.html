@@ -1,11 +1,11 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab One
+      QueueList
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
-    <app-queue-list></app-queue-list>
+<ion-content>
+  <app-queue-list *ngIf="dataQueue && dataQueue.data" [dataQueue]="dataQueue.data"></app-queue-list>
 </ion-content>

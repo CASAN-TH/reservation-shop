@@ -31,7 +31,7 @@ export class SiginPage implements OnInit {
       console.log(res);
       this.getMe();
 
-      this.navCtrl.navigateForward("queue");
+      this.navCtrl.navigateForward("");
 
 
     } catch (error) {
@@ -41,7 +41,7 @@ export class SiginPage implements OnInit {
     }
   }
   clickCancel() {
-    this.navCtrl.navigateForward('');
+    this.navCtrl.navigateForward('login');
   }
   async getMe() {
     let res: any = await this.authService.me();

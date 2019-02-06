@@ -17,4 +17,7 @@ export class QueuelistService {
   getQueueList(id) {
     return this.http.get(environment.apiURL + '/api/queues-list/' + id).toPromise();
   }
+  queueUpdate(body) {
+    return this.http.post(environment.apiURL + '/api/queues-update/', body).toPromise()
+  }
 }

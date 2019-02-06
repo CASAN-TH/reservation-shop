@@ -23,9 +23,9 @@ export class QueuePage implements OnInit {
 
   async getDataQueue() {
     let dataShop: any = JSON.parse(window.localStorage.getItem(environment.apiURL + '@shopme'));
-    console.log(dataShop);
+    // console.log(dataShop);
     this.dataQueue = await this.queuesList.getQueueList(dataShop._id);
-    console.log(this.dataQueue);
+    // console.log(this.dataQueue);
   }
 
 }
