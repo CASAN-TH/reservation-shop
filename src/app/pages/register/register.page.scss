@@ -3,11 +3,56 @@
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-  }
-  .textcenter {
-    text-align: center;
-  }
-.header{
-   --background-color:white;
 }
- 
+
+.textcenter {
+    text-align: center;
+}
+
+.header {
+    --background-color: white;
+}
+
+ion-list {
+    padding: 6px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    --ion-background-color: white;
+    box-shadow: 2px 1px 39px -12px rgba(49, 41, 41, 0.5);
+}
+
+.btn-regis {
+    --background: #FF6969;
+    margin-top: 20px !important;
+    margin: 10px;
+    --background-activated: #ffdada;
+}
+
+.btn-add-profile {
+    --color: #191919;
+    --background: #f1f1f1;
+    --border-color: #b9b9b9;
+    ;
+    --background-activated: #7c7c7c; // width: 55%;
+    height: 100%;
+    margin-top: 10px !important;
+}
+
+.icon-regis {
+    position: absolute;
+    right: 13px;
+    font-size: 34px;
+}
+
+.font-gray {
+    color: grey;
+}
+
+.font-red {
+    color: #ef9696;
+}
+
+.mg-regis {
+    margin: 23px;
+}

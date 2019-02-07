@@ -58,4 +58,7 @@ export class SiginPage implements OnInit {
     console.log(res)
 
   }
+  clickRegister() {
+    this.navCtrl.navigateForward('register');
+  }
 }
