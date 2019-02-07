@@ -34,7 +34,7 @@
         <ion-icon style="font-size: 30px" name="keypad"></ion-icon>
       </ion-avatar>
       <ion-label position="floating">password</ion-label>
-      <ion-input [(ngModel)]="sigin.password" type="password" id="pass" name="password" minlength="8" required></ion-input>
+      <ion-input [(ngModel)]="sigin.password" type="password" id="pass" name="password" minlength="8"></ion-input>
     </ion-item>
   </ion-list>
   <ion-button class="btn-login" [disabled]="!sigin.username||!sigin.password" mode="ios" expand="full" shape="round"
@@ -42,7 +42,8 @@
     <ion-icon class="icon-login" name="arrow-dropright-circle"></ion-icon>
   </ion-button>
   <div class="mg-regis" style="text-align: center;">
-    <p class="font-gray"> Don't have an account? Swipe right to <span class="font-red">create a new account</span></p>
+    <p class="font-gray"> Don't have an account? Swipe right to <span (click)="clickRegister()" class="font-red">create
+        a new account</span></p>
 
   </div>
 </ion-content>
