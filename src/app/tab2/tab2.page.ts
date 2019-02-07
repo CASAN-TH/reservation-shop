@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { environment } from 'src/environments/environment.prod';
+import { ToastController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab2',
@@ -7,7 +9,58 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  logout(){
+  user: any;
+  constructor(
+    public navCtrl: NavController,
+    public toastController: ToastController
+
+  ) {
+
+  }
+
+  ionViewWillEnter(){
+    this.user = JSON.parse(window.localStorage.getItem(environment.apiURL + '@user'))
+    let resToken: any = window.localStorage.getItem(environment.apiURL + '@token');
+    if (!resToken) {
+      this.navCtrl.navigateForward('sigin');
+    } else {
+      this.user = JSON.parse(window.localStorage.getItem(environment.apiURL + '@user'))
+      console.log(this.user);
+    }
+    console.log('zzz', this.user)
+  }
+
+  ngOnInit() {
+    // let resToken: any = window.localStorage.getItem(environment.apiURL + '@token');
+    // if (!resToken) {
+    //   this.navCtrl.navigateForward('sigin');
+    // } else {
+    //   this.user = JSON.parse(window.localStorage.getItem(environment.apiURL + '@user'))
+    //   console.log(this.user);
+    // }
+  }
+
+  logout() {
     window.localStorage.clear()
+    this.presentToastWithOptions();
+    
+    // setTimeout(() => {
+    //   this.navCtrl.navigateForward('')
+    // }, 2500);
+  }
+
+  async presentToastWithOptions() {
+    const toast = await this.toastController.create({
+      message: 'LOG OUT SUCCESS',
+      position: 'top',
+      mode: 'ios',
+      color: 'secondary',
+      duration: 2000
+    });
+    toast.present();
+  }
+
+  segmentChanged(event){
+
   }
 }

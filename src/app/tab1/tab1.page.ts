@@ -18,6 +18,10 @@ export class Tab1Page implements OnInit {
 
   }
 
+  ionViewWillEnter(){
+
+  }
+
   ngOnInit() {
     let resToken: any = window.localStorage.getItem(environment.apiURL + '@token');
     console.log(resToken);
