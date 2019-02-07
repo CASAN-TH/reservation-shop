@@ -1,5 +1,10 @@
 <ion-content>
   <!-- <app-queue-list></app-queue-list> -->
+  <ion-button (click)="back()" class="icon-back ">
+    <ion-icon style="font-size: 30px; color: #FF6969;" slot="start" name="arrow-back"></ion-icon>
+
+  </ion-button>
+
   <app-upload-image>
     <img *ngIf="!image" style="border-radius: 50%; margin-top: 30px; width: 45%;" class="center" src="http://www.saomaicorporation.com/wp-content/uploads/2018/07/defaultavatar.png"
       alt="อัพโหลดรูปโปรไฟล์">
@@ -93,7 +98,8 @@
     <ion-icon class="icon-regis" name="arrow-dropright-circle"></ion-icon>
   </ion-button>
   <div class="mg-regis" style="text-align: center;">
-      <p class="font-gray">By creating an account, you afree to our <span class="font-red">Terms of Service</span> and <span class="font-red">Privacy Policy</span></p>
+    <p class="font-gray">By creating an account, you afree to our <span class="font-red">Terms of Service</span> and
+      <span class="font-red">Privacy Policy</span></p>
   </div>
 
 </ion-content>
