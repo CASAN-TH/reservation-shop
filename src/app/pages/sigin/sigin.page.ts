@@ -30,10 +30,7 @@ export class SiginPage implements OnInit {
       window.localStorage.setItem(environment.apiURL + '@token', res.token);
       console.log(res);
       this.getMe();
-
-      this.navCtrl.navigateForward("");
-
-
+      this.navCtrl.navigateBack('');
     } catch (error) {
       console.log(error);
 

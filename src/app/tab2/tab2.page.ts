@@ -17,6 +17,7 @@ export class Tab2Page {
   ) {
 
   }
+  
 
   ionViewWillEnter(){
     this.user = JSON.parse(window.localStorage.getItem(environment.apiURL + '@user'))
@@ -31,6 +32,7 @@ export class Tab2Page {
   }
 
   ngOnInit() {
+    console.log("ngOnInit")
     // let resToken: any = window.localStorage.getItem(environment.apiURL + '@token');
     // if (!resToken) {
     //   this.navCtrl.navigateForward('sigin');
