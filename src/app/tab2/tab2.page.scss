@@ -51,3 +51,16 @@ ion-list{
     right: 13px;
     font-size: 34px;
 }
+.a {
+    white-space: nowrap; 
+    width: 180px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+   
+    }
+.b{
+    white-space: nowrap; 
+    width: 44px; 
+    overflow: hidden;
+    text-overflow: clip; 
+}
