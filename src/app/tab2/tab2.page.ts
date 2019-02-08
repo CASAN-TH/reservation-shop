@@ -45,10 +45,12 @@ export class Tab2Page {
   logout() {
     window.localStorage.clear()
     this.presentToastWithOptions();
+
+    setTimeout(() => {
+      this.navCtrl.navigateForward('sigin')
+      this.ionViewWillEnter();
+    }, 2500);
     
-    // setTimeout(() => {
-    //   this.navCtrl.navigateForward('')
-    // }, 2500);
   }
 
   async presentToastWithOptions() {
@@ -60,9 +62,5 @@ export class Tab2Page {
       duration: 2000
     });
     toast.present();
-  }
-
-  segmentChanged(event){
-
   }
 }
