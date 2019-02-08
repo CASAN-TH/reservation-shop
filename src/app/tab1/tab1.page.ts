@@ -12,18 +12,19 @@ import { LoadingService } from '../services/loading/loading.service';
 })
 export class Tab1Page implements OnInit {
   dataQueue: any;
+  dataShop: any;
 
   constructor(
     public loadingController: LoadingController,
     private queuesList: QueuelistService,
     public navCtrl: NavController,
     public loading: LoadingService
-    
+
   ) {
 
   }
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     let resToken: any = window.localStorage.getItem(environment.apiURL + '@token');
     console.log(resToken);
     if (!resToken) {
@@ -44,25 +45,38 @@ export class Tab1Page implements OnInit {
   }
   async getDataQueue() {
     await this.loading.presentLoadingWithOptions();
-    let dataShop: any = JSON.parse(window.localStorage.getItem(environment.apiURL + '@shopme'));
-    console.log(dataShop);
-    await this.loading.dismissOnPageChange();
-    this.dataQueue = await this.queuesList.getQueueList(dataShop._id);
-    console.log(this.dataQueue);
-    this.loading.dismissOnPageChange();
+    let dataShop;
+    try {
+      dataShop = JSON.parse(window.localStorage.getItem(environment.apiURL + '@shopme'));
+      console.log(dataShop);
+      this.dataQueue = await this.queuesList.getQueueList(dataShop._id);
+      console.log(this.dataQueue);
+      this.loading.dismissOnPageChange();
+
+    } catch (error) {
+      console.log(error);
+      this.loading.dismissOnPageChange();
+      if (dataShop === undefined) {
+        this.loading.presentToastPleaseCreateShop("Please Create Shop");
+      }
+     
+
+    }
+
+
 
   }
 
-  async presentLoadingWithOptions() {
-    const loading = await this.loadingController.create({
- 
-      duration: 5000,
-      message: 'Please wait...',
-      translucent: true,
-      cssClass: 'custom-class custom-loading'
-    });
-    return await loading.present();
-  }
+  // async presentLoadingWithOptions() {
+  //   const loading = await this.loadingController.create({
+
+  //     duration: 5000,
+  //     message: 'Please wait...',
+  //     translucent: true,
+  //     cssClass: 'custom-class custom-loading'
+  //   });
+  //   return await loading.present();
+  // }
 
   // async presentLoading() {
   //   const loading = await this.loadingController.create({

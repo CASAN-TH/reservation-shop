@@ -5,7 +5,7 @@
 
   </ion-button>
 
-  <app-upload-image>
+  <app-upload-image (url)="onUrlCallback($event)" >
     <img *ngIf="!image" style="border-radius: 50%; margin-top: 30px; width: 45%;" class="center" src="http://www.saomaicorporation.com/wp-content/uploads/2018/07/defaultavatar.png"
       alt="อัพโหลดรูปโปรไฟล์">
     <img *ngIf="image" style="border-radius: 50%; margin-top: 30px;  width: 45%; object-fit: cover;" class="center"
@@ -16,7 +16,7 @@
 
         </ion-col>
         <ion-col size="6">
-          <ion-button (url)="onUrlCallback($event)" class="btn-regis btn-add-profile " expand="block" mode="ios" shape="round"
+          <ion-button class="btn-regis btn-add-profile " expand="block" mode="ios" shape="round"
             fill="outline">Add
             Profile</ion-button>
         </ion-col>

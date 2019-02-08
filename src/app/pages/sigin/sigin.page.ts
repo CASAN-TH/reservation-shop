@@ -36,8 +36,15 @@ export class SiginPage implements OnInit {
       this.getMe();
       this.navCtrl.navigateBack('');
     } catch (error) {
-      console.log(error);
       this.loading.dismissOnPageChange();
+      if (error) {
+        if (error.error) {
+          if (error.error.message == 'Username or Password is invalid.') {
+            let dataError = 'Username หรือ Password ไม่ถูกต้อง'
+            await this.loading.presentToastWithOptions(dataError);
+          }
+        }
+      }
 
 
     }

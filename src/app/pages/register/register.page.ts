@@ -68,12 +68,17 @@ export class RegisterPage implements OnInit {
     ;
   }
   async getDataShop() {
-    let resp: any = JSON.parse(window.localStorage.getItem(environment.apiURL + '@user'));
-    console.log(resp)
-    this.user_id = resp._id;
-    let res: any = await this.shopService.getShopById(this.user_id);
-    window.localStorage.setItem(environment.apiURL + '@shopme', JSON.stringify(res.data[0]));
-    console.log(res)
+    try {
+      let resp: any = JSON.parse(window.localStorage.getItem(environment.apiURL + '@user'));
+      console.log(resp)
+      this.user_id = resp._id;
+      let res: any = await this.shopService.getShopById(this.user_id);
+      window.localStorage.setItem(environment.apiURL + '@shopme', JSON.stringify(res.data[0]));
+      console.log(res)
+    } catch (error) {
+      console.log(error)
+    }
+
 
   }
 }
