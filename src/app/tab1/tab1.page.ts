@@ -56,11 +56,6 @@ export class Tab1Page implements OnInit {
     } catch (error) {
       console.log(error);
       this.loading.dismissOnPageChange();
-      if (dataShop === undefined) {
-        this.loading.presentToastPleaseCreateShop("Please Create Shop");
-      }
-     
-
     }
 
 

@@ -2,3 +2,11 @@
   max-height: 35vh;
   overflow: hidden;
 }
+.center {
+  display: table-cell;
+  // height: calc(96vh - 145px);
+  height: 79vh;
+  text-align: center;
+  width: 100vw;
+  vertical-align: middle;
+}

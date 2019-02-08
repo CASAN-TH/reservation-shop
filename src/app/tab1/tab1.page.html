@@ -7,8 +7,8 @@
 </ion-header>
 
 <ion-content>
-  <h1 *ngIf="!dataQueue || !dataQueue.data">ไม่มีร้านค้า</h1>
-  <h1 style="text-align: center;color: gray" *ngIf="dataQueue && dataQueue.data && dataQueue.data.length === 0 ">ยังไม่มีคิว</h1>
+  <h1 class="center" style="text-align: center;color: gray; font-size: 12vw;" *ngIf="!dataQueue || !dataQueue.data">ไม่มีร้านค้า</h1>
+  <h1 class="center" style="text-align: center;color: gray; font-size: 12vw;" *ngIf="dataQueue && dataQueue.data && dataQueue.data.length === 0 ">ยังไม่มีคิว</h1>
 
   <app-queue-list *ngIf="dataQueue && dataQueue.data" [dataQueue]="dataQueue.data"></app-queue-list>
 </ion-content>

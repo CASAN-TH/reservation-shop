@@ -33,14 +33,5 @@ export class LoadingService {
     });
     toast.present();
   }
-  async presentToastPleaseCreateShop(err) {
-    const toast = await this.toastController.create({
-      message: err,
-      duration: 3000,
-      position: 'middle',
-      mode: 'ios',
-      color: 'danger'
-    });
-    toast.present();
-  }
+ 
 }
