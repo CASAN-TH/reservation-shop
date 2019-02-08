@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { QueueListPage } from './queue-list.page';
+import { AlertConfirmPage } from './alert-confirm.page';
 
-describe('QueueListPage', () => {
-  let component: QueueListPage;
-  let fixture: ComponentFixture<QueueListPage>;
+describe('AlertConfirmPage', () => {
+  let component: AlertConfirmPage;
+  let fixture: ComponentFixture<AlertConfirmPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ QueueListPage ],
+      declarations: [ AlertConfirmPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(QueueListPage);
+    fixture = TestBed.createComponent(AlertConfirmPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

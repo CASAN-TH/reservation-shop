@@ -1,18 +1,33 @@
-<ion-header class="header">
-  <ion-toolbar>
-    <ion-title>Register</ion-title>
-  </ion-toolbar>
+<ion-content>
+  <!-- <app-queue-list></app-queue-list> -->
+  <ion-button (click)="back()" class="icon-back ">
+    <ion-icon style="font-size: 30px; color: #FF6969;" slot="start" name="arrow-back"></ion-icon>
 
-</ion-header>
+  </ion-button>
 
-<ion-content padding>
-  <app-upload-image (url)="onUrlCallback($event)" >
-    <img *ngIf="!image" class="center" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpFRsqHC9ffOTNy2cayoWax5DkvOSq7EqH6XNx0OZFI8IWvMK3"
+  <app-upload-image>
+    <img *ngIf="!image" style="border-radius: 50%; margin-top: 30px; width: 45%;" class="center" src="http://www.saomaicorporation.com/wp-content/uploads/2018/07/defaultavatar.png"
       alt="อัพโหลดรูปโปรไฟล์">
-    <img *ngIf="image" class="center" [src]="image"
-      alt="อัพโหลดรูปโปรไฟล์">
+    <img *ngIf="image" style="border-radius: 50%; margin-top: 30px;  width: 45%; object-fit: cover;" class="center"
+      [src]="image" alt="อัพโหลดรูปโปรไฟล์">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3">
+
+        </ion-col>
+        <ion-col size="6">
+          <ion-button (url)="onUrlCallback($event)" class="btn-regis btn-add-profile " expand="block" mode="ios" shape="round"
+            fill="outline">Add
+            Profile</ion-button>
+        </ion-col>
+        <ion-col size="3">
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
   </app-upload-image>
-
+  <!-- 
   <ion-item>
     <ion-textarea class="textcenter" placeholder="อัพโหลดรูปโปรไฟล์"></ion-textarea>
   </ion-item>
@@ -22,22 +37,21 @@
   </ion-item>
   <ion-item>
     <ion-label position=" password">Password :</ion-label>
-    <ion-input [(ngModel)]="password" type="password" id="pass" name="password"
-    minlength="8" required placeholder="Password" ></ion-input>
+    <ion-input [(ngModel)]="password" type="password" id="pass" name="password" minlength="8" required placeholder="Password"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label position=" firstName"> Firstname :</ion-label>
-    <ion-input [(ngModel)]="firstname" placeholder="First name" ></ion-input>
+    <ion-input [(ngModel)]="firstname" placeholder="First name"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position=" lastName"> Lastname :</ion-label>
-    <ion-input [(ngModel)]="lastname" placeholder="Last name" ></ion-input>
+    <ion-input [(ngModel)]="lastname" placeholder="Last name"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="email" >E-mail :</ion-label>
+    <ion-label position="email">E-mail :</ion-label>
 
-    <ion-input [(ngModel)]="email" type="email" placeholder="example@konlor.com" ></ion-input>
+    <ion-input [(ngModel)]="email" type="email" placeholder="example@konlor.com"></ion-input>
   </ion-item>
 
   <div>
@@ -50,6 +64,42 @@
       </ion-col>
     </ion-row>
   </div>
+   -->
 
+  <ion-list style="margin-top: 25px !important;">
+    <ion-item>
+      <ion-label position="fixed">Username</ion-label>
+      <ion-input [(ngModel)]="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Password</ion-label>
+      <ion-input [(ngModel)]="password" type="password" id="pass" name="password" minlength="8">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Firstname</ion-label>
+      <ion-input [(ngModel)]="firstname" id="firstName" name="firstName" minlength="8">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Lastname</ion-label>
+      <ion-input [(ngModel)]="lastname" id="lastname" name="lastname" minlength="8">
+      </ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="fixed">E-mail</ion-label>
+      <ion-input [(ngModel)]="email" type="email" id="email" name="email" minlength="8">
+      </ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-button class="btn-regis" mode="ios" expand="full" shape="round" [disabled]="!username ||!password||!firstname||!lastname||!email"
+    (click)="confirm()">Register
+    <ion-icon class="icon-regis" name="arrow-dropright-circle"></ion-icon>
+  </ion-button>
+  <div class="mg-regis" style="text-align: center;">
+    <p class="font-gray">By creating an account, you afree to our <span class="font-red">Terms of Service</span> and
+      <span class="font-red">Privacy Policy</span></p>
+  </div>
 
 </ion-content>

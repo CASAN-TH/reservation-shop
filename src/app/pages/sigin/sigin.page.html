@@ -1,22 +1,49 @@
-<ion-header >
-  <ion-toolbar >
-    <ion-title>sigin</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <h1 style="margin: 20px;">Log In</h1>
+  <!-- <img style="border-radius: 50%; " src="http://www.lady108.com/wp-content/uploads/2017/11/2017-11-14_14-11-41_41d0e299ca1abeb2094852da042165c7.jpg"
+    alt=""> -->
+  <!-- <ion-card>
+    <ion-item>
+      <ion-label>
+        <ion-icon name="person"></ion-icon>
+      </ion-label>
+      <ion-input [(ngModel)]="sigin.username" placeholder="Username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <ion-icon name="keypad"></ion-icon>
+      </ion-label>
+      <ion-label position="floating">password</ion-label>
+      <ion-input [(ngModel)]="sigin.password" type="password" id="pass" name="password" minlength="8" required></ion-input>
+    </ion-item>
 
-<ion-content padding>
-    <img style="border-radius: 50%; " src="http://www.lady108.com/wp-content/uploads/2017/11/2017-11-14_14-11-41_41d0e299ca1abeb2094852da042165c7.jpg"
-    alt="">
-  <ion-item>
-    <ion-label position="fixed">Username</ion-label>
-    <ion-input   [(ngModel)]="sigin.username" placeholder="Username"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="fixed" >Password</ion-label>
-    <ion-input [(ngModel)]="sigin.password"  placeholder="Password" type="password" id="pass" name="password"
-    minlength="8" required></ion-input>
-  </ion-item>
+  </ion-card>
   <ion-button [disabled]="!sigin.username||!sigin.password" mode="ios" expand="full" shape="round" (click)="clickLogin()">Login</ion-button>
-  <ion-button mode="ios" expand="full" shape="round" (click)="clickCancel()">Cancel</ion-button>
+  <ion-button mode="ios" expand="full" shape="round" (click)="clickCancel()">Cancel</ion-button> -->
 
+  <ion-list>
+    <ion-item>
+      <ion-avatar slot="start">
+        <ion-icon mode="ios" style="font-size: 30px" name="person"></ion-icon>
+      </ion-avatar>
+      <ion-label position="floating">Username</ion-label>
+      <ion-input [(ngModel)]="sigin.username"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <ion-icon style="font-size: 30px" name="keypad"></ion-icon>
+      </ion-avatar>
+      <ion-label position="floating">password</ion-label>
+      <ion-input [(ngModel)]="sigin.password" type="password" id="pass" name="password" minlength="8"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-button class="btn-login" [disabled]="!sigin.username||!sigin.password" mode="ios" expand="full" shape="round"
+    (click)="clickLogin()">LOG IN
+    <ion-icon class="icon-login" name="arrow-dropright-circle"></ion-icon>
+  </ion-button>
+  <div class="mg-regis" style="text-align: center;">
+    <p class="font-gray"> Don't have an account? Swipe right to <span (click)="clickRegister()" class="font-red">create
+        a new account</span></p>
+
+  </div>
 </ion-content>

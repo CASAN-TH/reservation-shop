@@ -1,1 +1,53 @@
+.img{
+    border-radius: 50%;
+}
 
+p{
+    margin: 2px;
+    // font-family: 'Fauna One', serif;
+}
+h1{
+    margin-bottom: 0px;
+    margin-top: 0px;
+    // font-family: 'Fauna One', serif;
+}
+
+.button-chang-img{
+    width: 55%;
+    height: 28%;
+    --border-color: #5e5e5e;
+    --color: #5e5e5e;
+    --background-activated:#6d7076;
+}
+
+ion-grid{
+    padding: 14px;
+    margin-top: 50px;
+}
+
+ion-list{
+    padding:6px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    --ion-background-color: white;
+    box-shadow: 2px 1px 39px -12px rgba(49, 41, 41, 0.5);
+    ion-item{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+.btn-login {
+    --background: #FF6969;
+    margin-top: 20px !important;
+    margin: 10px;
+    box-shadow: 2px 1px 39px -12px rgba(49, 41, 41, 0.5);
+    --background-activated:#6d7076;
+}
+
+.icon-login {
+    position: absolute;
+    right: 13px;
+    font-size: 34px;
+}
