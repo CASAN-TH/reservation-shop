@@ -53,14 +53,13 @@ ion-list{
 }
 .a {
     white-space: nowrap; 
-    width: 180px; 
+    width: 200px;
     overflow: hidden;
     text-overflow: ellipsis;
    
     }
 .b{
-    white-space: nowrap; 
-    width: 44px; 
+    white-space: nowrap;
+    text-overflow: ellipsis;
     overflow: hidden;
-    text-overflow: clip; 
 }
