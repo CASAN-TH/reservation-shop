@@ -26,7 +26,7 @@ export class LoadingService {
   async presentToastWithOptions(err) {
     const toast = await this.toastController.create({
       message: err,
-      duration: 3000,
+      duration: 4000,
       position: 'bottom',
       mode: 'ios',
       color: 'danger'
