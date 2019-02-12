@@ -1,9 +1,11 @@
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, Platform } from '@ionic/angular';
 import { environment } from '../../../environments/environment';
 import { ShopsService } from 'src/app/services/shops/shops.service';
 import { LoadingService } from 'src/app/services/loading/loading.service';
+import { OneSignal } from '@ionic-native/onesignal/ngx';
+
 
 @Component({
   selector: 'app-sigin',
@@ -18,14 +20,25 @@ export class SiginPage implements OnInit {
   shopData: any;
   user_id: any;
   constructor(
+    private platform: Platform,
     public navCtrl: NavController,
     private authService: AuthService,
     private shopService: ShopsService,
-    public loading: LoadingService
-  ) { }
+    public loading: LoadingService,
+    private oneSignal: OneSignal
 
-  ngOnInit() {
+  ) { 
+
+    
   }
+
+  ionViewWillEnter(){
+    if (this.platform.is('cordova')) {
+      this.oneSignalConfig();
+     }
+  }
+
+  ngOnInit() {}
   async  clickLogin() {
     await this.loading.presentLoadingWithOptions();
     try {
@@ -71,5 +84,26 @@ export class SiginPage implements OnInit {
   }
   clickRegister() {
     this.navCtrl.navigateForward('register');
+  }
+
+  oneSignalConfig() {
+    this.oneSignal.startInit('38dc3697-091e-45b0-bdda-38b302b31e63', 'mhookata');
+ 
+     this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
+ 
+     this.oneSignal.handleNotificationReceived().subscribe(() => {
+       // do something when notification is received
+     });
+ 
+    this.oneSignal.handleNotificationOpened().subscribe(() => {
+       // do something when a notification is opened
+    });
+ 
+    this.oneSignal.endInit();
+    this.oneSignal.getIds().then(data => {
+      window.localStorage.setItem(environment.apiURL + '@oneSignal', JSON.stringify(data));
+    }).catch(error => {
+      throw error;
+     });
   }
 }
