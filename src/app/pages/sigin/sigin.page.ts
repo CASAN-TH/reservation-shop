@@ -29,6 +29,8 @@ export class SiginPage implements OnInit {
   async  clickLogin() {
     await this.loading.presentLoadingWithOptions();
     try {
+      const oneSignal: any = JSON.parse(window.localStorage.getItem(environment.apiURL + '@oneSignal'));
+      alert(oneSignal);
       const res: any = await this.authService.sigin(this.sigin);
       window.localStorage.setItem(environment.apiURL + '@token', res.token);
       console.log(res);

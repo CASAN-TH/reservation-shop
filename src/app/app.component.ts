@@ -3,7 +3,9 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { OneSignal } from '@ionic-native/onesignal/ngx';
 import * as firebase from 'firebase';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +15,8 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private oneSignal: OneSignal
   ) {
     this.initializeApp();
 
@@ -40,6 +43,10 @@ export class AppComponent {
       // messagingSenderId: '10519151021'
     // };
     firebase.initializeApp(config);
+    
+    if (platform.is('cordova')) {
+      this.oneSignalConfig();
+     }
   }
 
   initializeApp() {
@@ -47,6 +54,28 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  oneSignalConfig() {
+    this.oneSignal.startInit('38dc3697-091e-45b0-bdda-38b302b31e63', 'mhookata');
+ 
+     this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
+ 
+     this.oneSignal.handleNotificationReceived().subscribe(() => {
+       // do something when notification is received
+     });
+ 
+    this.oneSignal.handleNotificationOpened().subscribe(() => {
+       // do something when a notification is opened
+    });
+ 
+    this.oneSignal.endInit();
+ 
+    this.oneSignal.getIds().then(data => {
+      window.localStorage.setItem(environment.apiURL + '@oneSignal', JSON.stringify(data));
+    }).catch(error => {
+      throw error;
+     });
   }
 
 }
