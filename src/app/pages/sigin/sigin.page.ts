@@ -1,6 +1,6 @@
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { NavController, Platform } from '@ionic/angular';
+import { NavController, Platform, ModalController } from '@ionic/angular';
 import { environment } from '../../../environments/environment';
 import { ShopsService } from 'src/app/services/shops/shops.service';
 import { LoadingService } from 'src/app/services/loading/loading.service';
@@ -25,8 +25,8 @@ export class SiginPage implements OnInit {
     private authService: AuthService,
     private shopService: ShopsService,
     public loading: LoadingService,
-    private oneSignal: OneSignal
-
+    private oneSignal: OneSignal,
+    public modalController: ModalController
   ) { 
 
     
@@ -49,7 +49,11 @@ export class SiginPage implements OnInit {
       console.log(res);
       await this.loading.dismissOnPageChange();
       this.getMe();
-      this.navCtrl.navigateBack('');
+      this.modalController.dismiss({
+        'result': 'getdata'
+      }     
+      );
+      // this.navCtrl.navigateBack('');
     } catch (error) {
       this.loading.dismissOnPageChange();
       if (error) {
