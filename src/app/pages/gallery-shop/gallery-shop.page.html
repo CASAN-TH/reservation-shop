@@ -1,9 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>gallery-shop</ion-title>
+
+    <ion-title>
+      <ion-button (click)="back()" class="icon-back ">
+        <ion-icon style="font-size: 30px; color: #FF6969;" slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+      gallery-shop
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let item of [1,2,3,4]">
+        <ion-card>
+          <ion-img src="https://f.ptcdn.info/473/014/000/1389701321-1387524850-o.png"></ion-img>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

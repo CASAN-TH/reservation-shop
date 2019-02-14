@@ -17,9 +17,9 @@ export class Tab2Page {
   ) {
 
   }
-  
 
-  ionViewWillEnter(){
+
+  ionViewWillEnter() {
     this.user = JSON.parse(window.localStorage.getItem(environment.apiURL + '@user'))
     let resToken: any = window.localStorage.getItem(environment.apiURL + '@token');
     if (!resToken) {
@@ -50,7 +50,7 @@ export class Tab2Page {
       this.navCtrl.navigateForward('sigin')
       this.ionViewWillEnter();
     }, 2500);
-    
+
   }
 
   async presentToastWithOptions() {
@@ -62,5 +62,8 @@ export class Tab2Page {
       duration: 2000
     });
     toast.present();
+  }
+  openGalleryImage() {
+    this.navCtrl.navigateForward('gallery-shop');
   }
 }
