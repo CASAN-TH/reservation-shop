@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button (click)="back()" class="icon-back ">
+      <ion-icon style="font-size: 30px; color: #FF6969;" slot="start" name="arrow-back"></ion-icon>
+    </ion-button>
+    <ion-title>info-shop</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list style="margin-top: 25px !important;">
+    <ion-item>
+      <ion-label position="fixed">Username</ion-label>
+      <ion-input [(ngModel)]="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Password</ion-label>
+      <ion-input [(ngModel)]="password" type="password" id="pass" name="password" minlength="8">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Firstname</ion-label>
+      <ion-input [(ngModel)]="firstname" id="firstName" name="firstName" minlength="8">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed">Lastname</ion-label>
+      <ion-input [(ngModel)]="lastname" id="lastname" name="lastname" minlength="8">
+      </ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="fixed">E-mail</ion-label>
+      <ion-input [(ngModel)]="email" type="email" id="email" name="email" minlength="8">
+      </ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-button class="btn-regis" mode="ios" expand="full" shape="round"
+    [disabled]="!username ||!password||!firstname||!lastname||!email" (click)="confirm()">Register
+    <ion-icon class="icon-regis" name="arrow-dropright-circle"></ion-icon>
+  </ion-button>
+</ion-content>
