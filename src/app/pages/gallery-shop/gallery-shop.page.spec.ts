@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AlertConfirmPage } from './alert-confirm.page';
+import { GalleryShopPage } from './gallery-shop.page';
 
-describe('AlertConfirmPage', () => {
-  let component: AlertConfirmPage;
-  let fixture: ComponentFixture<AlertConfirmPage>;
+describe('GalleryShopPage', () => {
+  let component: GalleryShopPage;
+  let fixture: ComponentFixture<GalleryShopPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AlertConfirmPage ],
+      declarations: [ GalleryShopPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AlertConfirmPage);
+    fixture = TestBed.createComponent(GalleryShopPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

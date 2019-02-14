@@ -9,8 +9,8 @@ const routes: Routes = [
   { path: 'register', loadChildren: './pages/register/register.module#RegisterPageModule' },
   { path: 'sigin', loadChildren: './pages/sigin/sigin.module#SiginPageModule' },
 
-  { path: 'queue', loadChildren: './pages/queue/queue.module#QueuePageModule' },
-  { path: 'alert-confirm', loadChildren: './modals/alert-confirm/alert-confirm.module#AlertConfirmPageModule' }
+  { path: 'queue', loadChildren: './pages/queue/queue.module#QueuePageModule' },  { path: 'gallery-shop', loadChildren: './pages/gallery-shop/gallery-shop.module#GalleryShopPageModule' },
+
 
 
 
