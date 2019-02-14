@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'sigin', loadChildren: './pages/sigin/sigin.module#SiginPageModule' },
 
   { path: 'queue', loadChildren: './pages/queue/queue.module#QueuePageModule' },  { path: 'gallery-shop', loadChildren: './pages/gallery-shop/gallery-shop.module#GalleryShopPageModule' },
+  { path: 'personedit', loadChildren: './pages/personedit/personedit.module#PersoneditPageModule' },
 
 
 
