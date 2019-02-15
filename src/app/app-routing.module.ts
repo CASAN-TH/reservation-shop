@@ -15,7 +15,6 @@ const routes: Routes = [
   { path: 'queue', loadChildren: './pages/queue/queue.module#QueuePageModule' },
   { path: 'gallery-shop', loadChildren: './pages/gallery-shop/gallery-shop.module#GalleryShopPageModule' },
   { path: 'sigin', loadChildren: './modals/sigin/sigin.module#SiginPageModule' },
-  { path: 'personedit', loadChildren: './pages/personedit/personedit.module#PersoneditPageModule' },
   { path: 'info-shop', loadChildren: './pages/info-shop/info-shop.module#InfoShopPageModule' },
 
 
