@@ -8,10 +8,13 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./gallery-shop.page.scss'],
 })
 export class GalleryShopPage implements OnInit {
+
   galleryType = 'regular';
+  qty: any = 10;
+  imageGallery: any=[];
   constructor(
     public navCtrl: NavController,
-    public loading: LoadingService
+    public loading: LoadingService,
   ) { }
 
   ngOnInit() {
@@ -21,5 +24,10 @@ export class GalleryShopPage implements OnInit {
   }
   uploadImage() {
 
+  }
+
+  async onUrlCallback(event) {
+    this.imageGallery = await event;
+    alert(JSON.stringify(this.imageGallery))
   }
 }

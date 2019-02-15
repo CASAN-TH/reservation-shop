@@ -1,7 +1,7 @@
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { ActionSheetController, Platform, LoadingController } from '@ionic/angular';
 
 import * as firebase from 'firebase';
@@ -12,6 +12,7 @@ import * as firebase from 'firebase';
 })
 export class UploadImageComponent implements OnInit {
   @Output() url: EventEmitter<any> = new EventEmitter<any>();
+  @Input() qulity: any;
   // @Output() imageFirebase: EventEmitter<any> = new EventEmitter<any>();
   image: any;
   constructor(
@@ -46,7 +47,7 @@ export class UploadImageComponent implements OnInit {
 
   onImagePicker() {
     const options = {
-      maximumImagesCount: 10,
+      maximumImagesCount: this.qulity ? this.qulity : 1,
       width: 900,
       quality: 70,
       outputType: 0
