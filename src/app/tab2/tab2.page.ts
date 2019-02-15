@@ -78,4 +78,7 @@ export class Tab2Page {
   editShop() {
     this.navCtrl.navigateForward('info-shop');
   }
+  editPersone(){
+    this.navCtrl.navigateForward('persone-edit');
+  }
 }
