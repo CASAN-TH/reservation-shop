@@ -46,7 +46,7 @@ export class UploadImageComponent implements OnInit {
 
   onImagePicker() {
     const options = {
-      maximumImagesCount: 1,
+      maximumImagesCount: 10,
       width: 900,
       quality: 70,
       outputType: 0
