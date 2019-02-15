@@ -51,8 +51,10 @@
       <ion-icon color="medium" name="arrow-dropright-circle"></ion-icon>
     </ion-item>
   </ion-list>
-
-  <ion-button class="btn-login" class="btn-login" mode="ios" expand="full" shape="round" (click)="logout()">
+  <ion-button *ngIf="!user" class="btn-login" mode="ios" expand="full" shape="round" (click)="clickLogin()">LOG IN
+    <ion-icon class="icon-login" name="arrow-dropright-circle"></ion-icon>
+  </ion-button>
+  <ion-button *ngIf="user" class="btn-login" class="btn-login" mode="ios" expand="full" shape="round" (click)="logout()">
     LOG OUT
     <ion-icon class="icon-login" name="arrow-dropright-circle"></ion-icon>
   </ion-button>

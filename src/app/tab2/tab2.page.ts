@@ -1,6 +1,8 @@
+import { LoadingService } from 'src/app/services/loading/loading.service';
 import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
-import { ToastController, NavController } from '@ionic/angular';
+import { ToastController, NavController, ModalController } from '@ionic/angular';
+import { SiginPage } from '../pages/sigin/sigin.page';
 
 @Component({
   selector: 'app-tab2',
@@ -12,7 +14,9 @@ export class Tab2Page {
   user: any;
   constructor(
     public navCtrl: NavController,
-    public toastController: ToastController
+    public toastController: ToastController,
+    public modalController: ModalController,
+    public loading :LoadingService
 
   ) {
 
@@ -22,13 +26,10 @@ export class Tab2Page {
   ionViewWillEnter() {
     this.user = JSON.parse(window.localStorage.getItem(environment.apiURL + '@user'))
     let resToken: any = window.localStorage.getItem(environment.apiURL + '@token');
-    if (!resToken) {
-      this.navCtrl.navigateForward('sigin');
-    } else {
-      this.user = JSON.parse(window.localStorage.getItem(environment.apiURL + '@user'))
-      console.log(this.user);
-    }
+    this.user = JSON.parse(window.localStorage.getItem(environment.apiURL + '@user'))
+    console.log(this.user);
     console.log('zzz', this.user)
+
   }
 
   ngOnInit() {
@@ -44,13 +45,9 @@ export class Tab2Page {
 
   logout() {
     window.localStorage.clear()
-    this.presentToastWithOptions();
-
     setTimeout(() => {
-      this.navCtrl.navigateForward('sigin')
       this.ionViewWillEnter();
-    }, 2500);
-
+    }, 1400);
   }
 
   async presentToastWithOptions() {
@@ -65,5 +62,18 @@ export class Tab2Page {
   }
   openGalleryImage() {
     this.navCtrl.navigateForward('gallery-shop');
+  }
+
+  async clickLogin() {
+    const modal = await this.modalController.create({
+      component: SiginPage,
+      componentProps: { value: 123 }
+    });
+    await modal.present();
+    const data = await modal.onDidDismiss();
+    console.log(data);
+    if (data) {
+      this.ionViewWillEnter()
+    }
   }
 }
