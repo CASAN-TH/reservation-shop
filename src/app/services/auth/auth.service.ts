@@ -31,6 +31,10 @@ export class AuthService {
   me() {
     return this.http.get(environment.apiURL + '/api/me', { headers: this.authorizationHeader() }).toPromise();
   }
+  update(body) {
+    return this.http.put(environment.apiURL + '/api/me', body , { headers: this.authorizationHeader() }).toPromise();
+
+  }
 
 
 
