@@ -11,8 +11,11 @@ const routes: Routes = [
 
   { path: 'queue', loadChildren: './pages/queue/queue.module#QueuePageModule' },
   { path: 'gallery-shop', loadChildren: './pages/gallery-shop/gallery-shop.module#GalleryShopPageModule' },
+  { path: 'persone-edit', loadChildren: './pages/persone-edit/persone-edit.module#PersoneEditPageModule' },
+  { path: 'queue', loadChildren: './pages/queue/queue.module#QueuePageModule' },
+  { path: 'gallery-shop', loadChildren: './pages/gallery-shop/gallery-shop.module#GalleryShopPageModule' },
   { path: 'sigin', loadChildren: './modals/sigin/sigin.module#SiginPageModule' },
-  { path: 'personedit', loadChildren: './pages/personedit/personedit.module#PersoneditPageModule' },  { path: 'info-shop', loadChildren: './pages/info-shop/info-shop.module#InfoShopPageModule' },
+  { path: 'info-shop', loadChildren: './pages/info-shop/info-shop.module#InfoShopPageModule' },
 
 
 

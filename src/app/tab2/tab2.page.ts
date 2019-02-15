@@ -16,7 +16,7 @@ export class Tab2Page {
     public navCtrl: NavController,
     public toastController: ToastController,
     public modalController: ModalController,
-    public loading :LoadingService
+    public loading: LoadingService
 
   ) {
 
@@ -26,7 +26,6 @@ export class Tab2Page {
   ionViewWillEnter() {
     this.user = JSON.parse(window.localStorage.getItem(environment.apiURL + '@user'))
     let resToken: any = window.localStorage.getItem(environment.apiURL + '@token');
-    this.user = JSON.parse(window.localStorage.getItem(environment.apiURL + '@user'))
     console.log(this.user);
     console.log('zzz', this.user)
 
@@ -75,5 +74,11 @@ export class Tab2Page {
     if (data) {
       this.ionViewWillEnter()
     }
+  }
+  editShop() {
+    this.navCtrl.navigateForward('info-shop');
+  }
+  editPersone(){
+    this.navCtrl.navigateForward('persone-edit');
   }
 }

@@ -28,7 +28,7 @@
 </div>
 
 <ion-content>
-  <ion-list>
+  <ion-list *ngIf="user">
     <ion-item (click)="openGalleryImage()">
       <ion-avatar slot="start">
         <ion-icon color="medium" style="font-size: 30px" name="images" mode="ios"></ion-icon>
@@ -36,14 +36,14 @@
       <ion-label>อัฟโหลดรูปภาพ</ion-label>
       <ion-icon color="medium" name="arrow-dropright-circle"></ion-icon>
     </ion-item>
-    <ion-item>
+    <ion-item  (click)="editPersone()">
       <ion-avatar slot="start">
         <ion-icon color="medium" mode="ios" style="font-size: 30px" name="bookmarks"></ion-icon>
       </ion-avatar>
       <ion-label>จัดการจำนวนที่นั่ง</ion-label>
       <ion-icon color="medium" name="arrow-dropright-circle"></ion-icon>
     </ion-item>
-    <ion-item lines="none">
+    <ion-item lines="none" (click)="editShop()">
       <ion-avatar slot="start">
         <ion-icon color="medium" mode="ios" style="font-size: 30px" name="contact"></ion-icon>
       </ion-avatar>

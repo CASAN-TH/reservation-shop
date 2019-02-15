@@ -88,6 +88,7 @@ export class SiginPage implements OnInit {
 
   }
   clickRegister() {
+    this.modalController.dismiss();
     this.navCtrl.navigateForward('register');
   }
 

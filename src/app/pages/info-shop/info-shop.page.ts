@@ -7,10 +7,32 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./info-shop.page.scss'],
 })
 export class InfoShopPage implements OnInit {
-
+  image: any = "https://res.cloudinary.com/dyiuidzsc/image/upload/v1550205621/Mookata/no-img-shop.jpg";
+  dataShop = {
+    name: '',
+    image: '',
+    descreiption: {
+      title: '',
+      detail: ''
+    },
+    starttime: '',
+    endtime: '',
+    house_no: '',
+    village: '',
+    subdistrict: '',
+    district: '',
+    province: '',
+    postalcode: ''
+  }
   constructor(public navCtrl: NavController) { }
 
   ngOnInit() {
+    console.log(this.dataShop);
   }
-
+  back() {
+    this.navCtrl.goBack();
+  }
+  onUrlCallback(e) {
+    this.image = e;
+  }
 }

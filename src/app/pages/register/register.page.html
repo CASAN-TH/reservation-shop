@@ -1,23 +1,22 @@
 <ion-content>
   <!-- <app-queue-list></app-queue-list> -->
-  <ion-button (click)="back()" class="icon-back ">
+  <ion-buttons (click)="back()" class="icon-back ">
     <ion-icon style="font-size: 30px; color: #FF6969;" slot="start" name="arrow-back"></ion-icon>
+  </ion-buttons>
 
-  </ion-button>
+  <img *ngIf="!image" style="border-radius: 50%; margin-top: 30px; width: 45vw;" class="center"
+    src="http://www.saomaicorporation.com/wp-content/uploads/2018/07/defaultavatar.png" alt="อัพโหลดรูปโปรไฟล์">
+  <img *ngIf="image" style="border-radius: 50%; margin-top: 30px;  width: 45vw; object-fit: cover;" class="center"
+    [src]="image" alt="อัพโหลดรูปโปรไฟล์">
+  <app-upload-image (url)="onUrlCallback($event)">
 
-  <app-upload-image (url)="onUrlCallback($event)" >
-    <img *ngIf="!image" style="border-radius: 50%; margin-top: 30px; width: 45%;" class="center" src="http://www.saomaicorporation.com/wp-content/uploads/2018/07/defaultavatar.png"
-      alt="อัพโหลดรูปโปรไฟล์">
-    <img *ngIf="image" style="border-radius: 50%; margin-top: 30px;  width: 45%; object-fit: cover;" class="center"
-      [src]="image" alt="อัพโหลดรูปโปรไฟล์">
     <ion-grid>
       <ion-row>
         <ion-col size="3">
 
         </ion-col>
         <ion-col size="6">
-          <ion-button class="btn-regis btn-add-profile " expand="block" mode="ios" shape="round"
-            fill="outline">Add
+          <ion-button class="btn-regis btn-add-profile " expand="block" mode="ios" shape="round" fill="outline">Add
             Profile</ion-button>
         </ion-col>
         <ion-col size="3">
@@ -93,8 +92,8 @@
     </ion-item>
   </ion-list>
 
-  <ion-button class="btn-regis" mode="ios" expand="full" shape="round" [disabled]="!username ||!password||!firstname||!lastname||!email"
-    (click)="confirm()">Register
+  <ion-button class="btn-regis" mode="ios" expand="full" shape="round"
+    [disabled]="!username ||!password||!firstname||!lastname||!email" (click)="confirm()">Register
     <ion-icon class="icon-regis" name="arrow-dropright-circle"></ion-icon>
   </ion-button>
   <div class="mg-regis" style="text-align: center;">
