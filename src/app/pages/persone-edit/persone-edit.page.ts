@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-personedit',
-  templateUrl: './personedit.page.html',
-  styleUrls: ['./personedit.page.scss'],
+  selector: 'app-persone-edit',
+  templateUrl: './persone-edit.page.html',
+  styleUrls: ['./persone-edit.page.scss'],
 })
-export class PersoneditPage implements OnInit {
-  
+export class PersoneEditPage implements OnInit {
+
   nameicon : string = "create"
   namecheck : Boolean = false
 

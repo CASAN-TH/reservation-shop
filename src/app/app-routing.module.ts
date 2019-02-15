@@ -11,6 +11,7 @@ const routes: Routes = [
 
   { path: 'queue', loadChildren: './pages/queue/queue.module#QueuePageModule' },  { path: 'gallery-shop', loadChildren: './pages/gallery-shop/gallery-shop.module#GalleryShopPageModule' },
   { path: 'personedit', loadChildren: './pages/personedit/personedit.module#PersoneditPageModule' },
+  { path: 'persone-edit', loadChildren: './pages/persone-edit/persone-edit.module#PersoneEditPageModule' },
 
 
 
