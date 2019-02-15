@@ -1,6 +1,6 @@
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { NavController, Platform } from '@ionic/angular';
+import { NavController, Platform, ModalController } from '@ionic/angular';
 import { environment } from '../../../environments/environment';
 import { ShopsService } from 'src/app/services/shops/shops.service';
 import { LoadingService } from 'src/app/services/loading/loading.service';
@@ -25,31 +25,36 @@ export class SiginPage implements OnInit {
     private authService: AuthService,
     private shopService: ShopsService,
     public loading: LoadingService,
-    private oneSignal: OneSignal
+    private oneSignal: OneSignal,
+    public modalController: ModalController
+  ) {
 
-  ) { 
 
-    
   }
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     if (this.platform.is('cordova')) {
       this.oneSignalConfig();
-     }
+    }
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
   async  clickLogin() {
     await this.loading.presentLoadingWithOptions();
     try {
-      const oneSignal: any = JSON.parse(window.localStorage.getItem(environment.apiURL + '@oneSignal'));
-      alert(JSON.stringify(oneSignal));
+      // const oneSignal: any = JSON.parse(window.localStorage.getItem(environment.apiURL + '@oneSignal'));
+      // alert(JSON.stringify(oneSignal));
       const res: any = await this.authService.sigin(this.sigin);
       window.localStorage.setItem(environment.apiURL + '@token', res.token);
       console.log(res);
       await this.loading.dismissOnPageChange();
       this.getMe();
-      this.navCtrl.navigateBack('');
+      this.modalController.dismiss({
+        'result': 'getdata'
+      }
+      );
+
+      // this.navCtrl.navigateBack('');
     } catch (error) {
       this.loading.dismissOnPageChange();
       if (error) {
@@ -88,22 +93,22 @@ export class SiginPage implements OnInit {
 
   oneSignalConfig() {
     this.oneSignal.startInit('38dc3697-091e-45b0-bdda-38b302b31e63', 'mhookata');
- 
-     this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
- 
-     this.oneSignal.handleNotificationReceived().subscribe(() => {
-       // do something when notification is received
-     });
- 
-    this.oneSignal.handleNotificationOpened().subscribe(() => {
-       // do something when a notification is opened
+
+    this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
+
+    this.oneSignal.handleNotificationReceived().subscribe(() => {
+      // do something when notification is received
     });
- 
+
+    this.oneSignal.handleNotificationOpened().subscribe(() => {
+      // do something when a notification is opened
+    });
+
     this.oneSignal.endInit();
     this.oneSignal.getIds().then(data => {
       window.localStorage.setItem(environment.apiURL + '@oneSignal', JSON.stringify(data));
     }).catch(error => {
       throw error;
-     });
+    });
   }
 }

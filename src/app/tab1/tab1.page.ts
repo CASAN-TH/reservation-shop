@@ -1,8 +1,9 @@
 import { environment } from './../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { QueuelistService } from '../services/queuelist/queuelist.service';
-import { NavController, LoadingController } from '@ionic/angular';
+import { NavController, LoadingController, ModalController } from '@ionic/angular';
 import { LoadingService } from '../services/loading/loading.service';
+import { SiginPage } from '../pages/sigin/sigin.page';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class Tab1Page implements OnInit {
     public loadingController: LoadingController,
     private queuesList: QueuelistService,
     public navCtrl: NavController,
-    public loading: LoadingService
+    public loading: LoadingService,
+    public modalController: ModalController
 
   ) {
 
@@ -28,7 +30,7 @@ export class Tab1Page implements OnInit {
     let resToken: any = window.localStorage.getItem(environment.apiURL + '@token');
     console.log(resToken);
     if (!resToken) {
-      this.navCtrl.navigateForward('sigin');
+      this.sigin();
     } else {
       this.getDataQueue();
     }
@@ -59,8 +61,10 @@ export class Tab1Page implements OnInit {
     }
 
 
-
   }
+  // SiginPage() {
+
+  // }
 
   // async presentLoadingWithOptions() {
   //   const loading = await this.loadingController.create({
@@ -84,4 +88,18 @@ export class Tab1Page implements OnInit {
 
   //   console.log('Loading dismissed!');
   // }
+
+  async sigin() {
+    const modal = await this.modalController.create({
+      component: SiginPage,
+      componentProps: { value: 123 }
+    });
+    await modal.present();
+    const  data  = await modal.onDidDismiss();
+    console.log(data);
+    if(data){
+      this.getDataQueue();
+    }
+  }
+
 }

@@ -1,0 +1,40 @@
+.icon-back {
+    --background: none;
+    --background-activated: none;
+    --box-shadow: none !important;
+}
+
+.image-container {
+    min-height: 192px;
+    background-size: cover;
+}
+
+@media (min-width: 0px) {
+    .images {
+        column-count: 2;
+    }
+}
+
+@media (min-width: 420px) {
+    .images {
+        column-count: 3;
+    }
+}
+
+@media (min-width: 720px) {
+    .images {
+        column-count: 4;
+    }
+}
+
+.one-image {
+    margin: 2px;
+}
+.center {
+    display: table-cell;
+    // height: calc(96vh - 145px);
+    height: 48vw;
+    text-align: center;
+    width: 100vw;
+    vertical-align: middle;
+}

@@ -1,9 +1,51 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>gallery-shop</ion-title>
+
+    <ion-title>
+      <ion-button (click)="back()" class="icon-back ">
+        <ion-icon style="font-size: 30px; color: #FF6969;" slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+      gallery-shop
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+  <!-- <ion-segment [(ngModel)]="galleryType" color="primary">
+    <ion-segment-button value="regular">
+      Regular
+    </ion-segment-button>
+    <ion-segment-button value="pinterest">
+      Pinterest
+    </ion-segment-button>
+  </ion-segment> -->
+
+  <div [ngSwitch]="galleryType">
+
+    <ion-grid *ngSwitchCase="'regular'">
+      <ion-row>
+        <ion-col size="6" size-md="4" size-xl="3" align-self-center text-align-center (click)="uploadImage()">
+          <p  style="font-size: 14vw; margin: 0%; text-align: center; ">
+            +
+          </p>
+        </ion-col>
+        <ion-col size="6" size-md="4" size-xl="3" *ngFor="let image of [1,2,3,4,5,6,7,8,9,10,11]">
+          <div class="image-container"
+            [style.background-image]="'url(https://cdn.pixabay.com/photo/2018/02/08/22/27/flower-3140492__340.jpg)'">
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <!-- <div>
+     <ion-grid>
+    <ion-row>
+      <ion-col size="6" size-md="4" size-xl="3"  *ngFor="let item of [1,2,3,4]">
+          <div class="image-container" [style.background-image]="'url(https://cdn.pixabay.com/photo/2018/02/08/22/27/flower-3140492__340.jpg)'"></div>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  </div> -->
 
 </ion-content>

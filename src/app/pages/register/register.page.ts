@@ -39,31 +39,43 @@ export class RegisterPage implements OnInit {
   }
 
   async confirm() {
-    await this.loading.presentLoadingWithOptions();
-    const oneSignal: any = JSON.parse(window.localStorage.getItem(environment.apiURL + '@oneSignal'));
-    alert(JSON.stringify(oneSignal));
-    let body;
-    if (oneSignal && oneSignal.userId) {
-      body = {
-        username: this.username,
-        password: this.password,
-        firstname: this.firstname,
-        lastname: this.lastname,
-        email: this.email,
-        profileImageURL: this.image,
-        ref1:oneSignal.userId,
+    try {
+      await this.loading.presentLoadingWithOptions();
+      const oneSignal: any = JSON.parse(window.localStorage.getItem(environment.apiURL + '@oneSignal'));
+      alert(JSON.stringify(oneSignal));
+      let body;
+      if (oneSignal && oneSignal.userId) {
+        body = {
+          username: this.username,
+          password: this.password,
+          firstname: this.firstname,
+          lastname: this.lastname,
+          email: this.email,
+          profileImageURL: this.image,
+          ref1: oneSignal.userId,
+        }
       }
+
+      console.log(body);
+
+      let res: any = await this.authService.register(body);
+      console.log(res);
+      window.localStorage.setItem(environment.apiURL + '@token', res.token);
+      await this.loading.dismissOnPageChange();
+      this.getMe();
+      this.navCtrl.navigateForward("");
+      this.loading.dismissOnPageChange();
+    } catch (error) {
+      this.loading.dismissOnPageChange();
+      if (error && error.error.message === "Please fill a valid email address") {
+        this.loading.presentToastWithOptions('อีเมลซ้ำกรุณาลองใหม่อีกครั้ง')
+      }
+      else if (error && error.error.message === "11000 duplicate key error collection: auth.users index: username already exists") {
+        this.loading.presentToastWithOptions('username มีผู้งานแล้วกรุณาลองใหม่อีกครั้ง')
+      }
+
     }
 
-    console.log(body);
-
-    let res: any = await this.authService.register(body);
-    console.log(res);
-    window.localStorage.setItem(environment.apiURL + '@token', res.token);
-    await this.loading.dismissOnPageChange();
-    this.getMe();
-    this.navCtrl.navigateForward("");
-    this.loading.dismissOnPageChange();
 
   }
   cancel() {

@@ -12,6 +12,7 @@ import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { HttpClientModule } from '@angular/common/http';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
+import { SiginPageModule } from './pages/sigin/sigin.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +21,8 @@ import { OneSignal } from '@ionic-native/onesignal/ngx';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    SiginPageModule
   ],
   providers: [
     StatusBar,
