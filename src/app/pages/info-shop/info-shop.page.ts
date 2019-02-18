@@ -26,8 +26,8 @@ export class InfoShopPage implements OnInit {
     postalcode: ''
   }
   constructor(public navCtrl: NavController,
-    public shopsService:ShopsService
-    ) { }
+    public shopsService: ShopsService
+  ) { }
 
   ngOnInit() {
     console.log(this.dataShop);
@@ -39,6 +39,10 @@ export class InfoShopPage implements OnInit {
     this.image = e;
   }
   confirm() {
-    console.log(this.dataShop);
+
+    // this.dataShop.starttime = '2019-01-29T' + this.dataShop.starttime + ':00.000Z';
+    // this.dataShop.endtime = '2019-01-29T' + this.dataShop.endtime + ':00.000Z';
+    // console.log(this.dataShop);
+    this.shopsService.createShop(this.dataShop);
   }
 }
