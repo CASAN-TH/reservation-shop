@@ -15,6 +15,17 @@ export class GalleryShopPage implements OnInit {
   qty: any = 10;
   imageGallery: any;
   shop: any;
+  image = [
+    'https://foodrevolution.org/wp-content/uploads/2018/04/blog-featured-diabetes-20180406-1330.jpg',
+    'https://foodrevolution.org/wp-content/uploads/2018/04/blog-featured-diabetes-20180406-1330.jpg',
+    'http://www.ub.edu/plasostenibilitat/wp-content/uploads/2015/09/30_Foods_cropped.jpg',
+    'https://foodrevolution.org/wp-content/uploads/2018/04/blog-featured-diabetes-20180406-1330.jpg',
+    'https://i.pinimg.com/236x/d3/9b/a2/d39ba223100b002c93c963a0da526945.jpg',
+    'https://cdn.firstcrycdn.com/2018/03/446808145-H.jpg',
+    'https://foodrevolution.org/wp-content/uploads/2018/04/blog-featured-diabetes-20180406-1330.jpg',
+    'https://foodrevolution.org/wp-content/uploads/2018/04/blog-featured-diabetes-20180406-1330.jpg',
+    'https://www.sbs.com.au/food/sites/sbs.com.au.food/files/pho.jpg'
+  ]
   constructor(
     public navCtrl: NavController,
     public loading: LoadingService,
