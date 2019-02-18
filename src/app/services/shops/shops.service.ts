@@ -20,7 +20,7 @@ export class ShopsService {
   createShop(body) {
     return this.http.post(environment.apiURL + '/api/shops', body, { headers: this.authorizationHeader() }).toPromise();
   }
-  updateShop(body) {
-    return this.http.put(environment.apiURL + '/api/shops', body, { headers: this.authorizationHeader() }).toPromise();
+  updateShop(_id, body) {
+    return this.http.put(environment.apiURL + '/api/shops/' + _id, body, { headers: this.authorizationHeader() }).toPromise();
   }
 }

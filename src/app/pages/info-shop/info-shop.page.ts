@@ -10,35 +10,44 @@ import { environment } from 'src/environments/environment';
 })
 export class InfoShopPage implements OnInit {
   image: any = "https://res.cloudinary.com/dyiuidzsc/image/upload/v1550205621/Mookata/no-img-shop.jpg";
+  dataShop = {
+    name: '',
+    image: this.image,
+    descreiption: {
+      title: '',
+      detail: ''
+    },
+    starttime: '',
+    endtime: '',
+    house_no: '',
+    village: '',
+    subdistrict: '',
+    district: '',
+    province: '',
+    postalcode: '',
+    user_id: ''
+  }
+  user: any;
   detailShop: any;
-  dataShop: any;
+  haveShop: any;
+
   constructor(public navCtrl: NavController,
     public shopsService: ShopsService
   ) { }
 
-  async  ngOnInit() {
-    console.log(this.dataShop);
-    this.detailShop = await JSON.parse(window.localStorage.getItem(environment.apiURL + "@shopme"));
+  async ngOnInit() {
+    // console.log(this.dataShop);
+    let user: any = JSON.parse(window.localStorage.getItem(environment.apiURL + "@user"));
+    this.user = user;
+    console.log(user);
+    let resShop: any = await this.shopsService.getShopById(this.user._id);
+    this.detailShop = resShop.data[0];
     console.log(this.detailShop);
+    this.haveShop = await JSON.parse(window.localStorage.getItem(environment.apiURL + "@shopme"));
     if (this.detailShop) {
-      this.dataShop = {
-        name: this.detailShop.name ? this.detailShop.name : '',
-        image: this.detailShop.image ? this.detailShop.image : this.image,
-        descreiption: {
-          title: this.detailShop.descreiption.title ? this.detailShop.descreiption.title : '',
-          detail: this.detailShop.descreiption.detail ? this.detailShop.descreiption.detail : ''
-        },
-        starttime: this.detailShop.starttime ? this.detailShop.starttime : '',
-        endtime: this.detailShop.endtime ? this.detailShop.endtime : '',
-        house_no: this.detailShop.house_no ? this.detailShop.house_no : '',
-        village: this.detailShop.village ? this.detailShop.village : '',
-        subdistrict: this.detailShop.subdistrict ? this.detailShop.subdistrict : '',
-        district: this.detailShop.district ? this.detailShop.district : '',
-        province: this.detailShop.province ? this.detailShop.province : '',
-        postalcode: this.detailShop.postalcode ? this.detailShop.postalcode : ''
-      }
+      this.getShop()
     }
-
+    console.log(this.detailShop);
   }
   back() {
     this.navCtrl.goBack();
@@ -49,9 +58,10 @@ export class InfoShopPage implements OnInit {
   async confirm() {
     try {
 
-      if (this.detailShop) {
-        let res: any = await this.shopsService.updateShop(this.dataShop);
+      if (this.haveShop) {
+        let res: any = await this.shopsService.updateShop(this.detailShop._id , this.dataShop);
       } else {
+        this.dataShop.user_id = this.user._id;
         let res: any = await this.shopsService.createShop(this.dataShop);
         console.log(res);
         window.localStorage.setItem(environment.apiURL + '@shopme', JSON.stringify(res.data));
@@ -62,5 +72,24 @@ export class InfoShopPage implements OnInit {
 
     }
 
+  }
+  getShop() {
+    this.dataShop = {
+      name: this.detailShop.name,
+      image: this.detailShop.image,
+      descreiption: {
+        title: this.detailShop.descreiption.title,
+        detail: this.detailShop.descreiption.detail,
+      },
+      starttime: this.detailShop.starttime,
+      endtime: this.detailShop.endtime,
+      house_no: this.detailShop.house_no,
+      village: this.detailShop.village,
+      subdistrict: this.detailShop.subdistrict,
+      district: this.detailShop.district,
+      province: this.detailShop.province,
+      postalcode: this.detailShop.postalcode,
+      user_id: this.detailShop.user_id
+    }
   }
 }
