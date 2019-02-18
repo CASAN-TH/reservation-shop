@@ -4,10 +4,10 @@
     <ion-icon style="font-size: 30px; color: #FF6969;" slot="start" name="arrow-back"></ion-icon>
   </ion-buttons>
 
-  <img *ngIf="!image" style="border-radius: 50%; margin-top: 30px; width: 45vw;" class="center"
+  <img *ngIf="!image" style="border-radius: 50%; margin-top: 30px; width: 45vw; height: 45vw; " class="center"
     src="http://www.saomaicorporation.com/wp-content/uploads/2018/07/defaultavatar.png" alt="อัพโหลดรูปโปรไฟล์">
-  <img *ngIf="image" style="border-radius: 50%; margin-top: 30px;  width: 45vw; object-fit: cover;" class="center"
-    [src]="image" alt="อัพโหลดรูปโปรไฟล์">
+  <img *ngIf="image" style="border-radius: 50%; margin-top: 30px;  width: 45vw;height: 45vw; object-fit: cover;"
+    class="center" [src]="image" alt="อัพโหลดรูปโปรไฟล์">
   <app-upload-image (url)="onUrlCallback($event)">
 
     <ion-grid>

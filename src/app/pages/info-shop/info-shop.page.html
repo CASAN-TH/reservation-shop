@@ -14,8 +14,7 @@
 
 <ion-content>
   <div>
-    <ion-img style="width: 100vw;height: 52vw;"
-      src="https://res.cloudinary.com/dyiuidzsc/image/upload/v1550205621/Mookata/no-img-shop.jpg"></ion-img>
+    <ion-img style="width: 100vw;height: 52vw; object-fit: cover;" src="{{image}}"></ion-img>
 
     <app-upload-image (url)="onUrlCallback($event)">
 
@@ -28,67 +27,61 @@
   </div>
   <ion-list style="margin-top: 25px !important;">
     <ion-item>
-      <ion-label position="fixed">Shop name</ion-label>
+      <ion-label position="fixed">ชื่อร้าน</ion-label>
       <ion-input [(ngModel)]="dataShop.name"></ion-input>
 
     </ion-item>
     <ion-item>
-      <ion-label position="fixed">Starttime</ion-label>
+      <ion-label position="fixed">เวลาเปิดร้าน</ion-label>
       <ion-datetime [(ngModel)]="dataShop.starttime" display-format=" HH:mm A"></ion-datetime>
     </ion-item>
     <ion-item>
-      <ion-label position="fixed">Endtime</ion-label>
+      <ion-label position="fixed">เวลาปิดร้าน</ion-label>
       <ion-datetime [(ngModel)]="dataShop.endtime" display-format=" HH:mm A"></ion-datetime>
     </ion-item>
     <ion-item>
-      <ion-label position="fixed">House no</ion-label>
-      <ion-input [(ngModel)]="dataShop.house_no" type="email" id="email" name="email" minlength="8">
+      <ion-label position="fixed">บ้านเลขที่</ion-label>
+      <ion-input [(ngModel)]="dataShop.house_no">
       </ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="fixed">Village</ion-label>
-      <ion-input [(ngModel)]="dataShop.village" type="email" id="email" name="email" minlength="8">
+      <ion-label position="fixed">หมู่บ้าน</ion-label>
+      <ion-input [(ngModel)]="dataShop.village">
       </ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="fixed">Subdistrict</ion-label>
-      <ion-input [(ngModel)]="dataShop.subdistrict" type="email" id="email" name="email" minlength="8">
+      <ion-label position="fixed">ตำบล</ion-label>
+      <ion-input [(ngModel)]="dataShop.subdistrict">
       </ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="fixed">District</ion-label>
-      <ion-input [(ngModel)]="dataShop.district" type="email" id="email" name="email" minlength="8">
+      <ion-label position="fixed">อำเภอ</ion-label>
+      <ion-input [(ngModel)]="dataShop.district">
       </ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="fixed">Province</ion-label>
-      <ion-input [(ngModel)]="dataShop.province" type="email" id="email" name="email">
+      <ion-label position="fixed">จังหวัด</ion-label>
+      <ion-input [(ngModel)]="dataShop.province">
       </ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="fixed">District</ion-label>
-      <ion-input [(ngModel)]="dataShop.district" type="email" id="email" name="email">
-      </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="fixed">Postalcode</ion-label>
-      <ion-input [(ngModel)]="dataShop.postalcode" type="email" id="email" name="email">
+      <ion-label position="fixed">รหัสไปรษณีย์</ion-label>
+      <ion-input [(ngModel)]="dataShop.postalcode">
       </ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="fixed">Title Descreiption</ion-label>
-      <ion-input [(ngModel)]="dataShop.descreiption.title" type="password" id="pass" name="password">
+      <ion-label position="fixed">หัวข้อรายละเอียดร้าน</ion-label>
+      <ion-input [(ngModel)]="dataShop.descreiption.title">
       </ion-input>
     </ion-item>
     <ion-item lines="none">
-      <ion-label position="fixed">Detail Descreiption</ion-label>
+      <ion-label position="fixed">รายละเอียดของร้าน</ion-label>
       <ion-textarea [(ngModel)]="dataShop.descreiption.detail"></ion-textarea>
     </ion-item>
   </ion-list>
 
-  <ion-button class="btn-regis" mode="ios" expand="full" shape="round"
-    [disabled]="!username ||!password||!firstname||!lastname||!email" (click)="confirm()">Register
+  <ion-button class="btn-regis" mode="ios" expand="full" shape="round" (click)="confirm()">สร้างร้าน
     <ion-icon class="icon-regis" name="arrow-dropright-circle"></ion-icon>
   </ion-button>
 </ion-content>

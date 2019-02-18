@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { LoadingService } from 'src/app/services/loading/loading.service';
 import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
@@ -16,7 +17,8 @@ export class Tab2Page {
     public navCtrl: NavController,
     public toastController: ToastController,
     public modalController: ModalController,
-    public loading: LoadingService
+    public loading: LoadingService,
+    public authService: AuthService
 
   ) {
 
@@ -44,6 +46,7 @@ export class Tab2Page {
 
   logout() {
     window.localStorage.clear()
+    this.loading.presentToastWithOptions('ออกจากระบบสำเร็จ');
     setTimeout(() => {
       this.ionViewWillEnter();
     }, 1400);
@@ -78,7 +81,27 @@ export class Tab2Page {
   editShop() {
     this.navCtrl.navigateForward('info-shop');
   }
-  editPersone(){
+  editPersone() {
     this.navCtrl.navigateForward('persone-edit');
+  }
+  async onUrlCallback(e) {
+    this.loading.presentLoadingWithOptions()
+    try {
+      let data = {
+        username: this.user.username,
+        firstname: this.user.firstname,
+        lastname: this.user.lastname,
+        profileImageURL: e,
+        email: this.user.email
+      }
+      let res: any = await this.authService.update(data);
+      window.localStorage.removeItem(environment.apiURL + '@user');
+      window.localStorage.setItem(environment.apiURL + '@user', JSON.stringify(res.data));
+      this.ionViewWillEnter()
+      await this.loading.dismissOnPageChange();
+    } catch (error) {
+
+    }
+
   }
 }
