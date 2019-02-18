@@ -22,9 +22,13 @@ export class GalleryShopPage implements OnInit {
   ) {
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.shop = JSON.parse(window.localStorage.getItem(environment.apiURL + "@shopme"));
     console.log(this.shop);
+  }
+
+  ngOnInit() {
+
   }
   back() {
     this.navCtrl.goBack();
@@ -33,8 +37,11 @@ export class GalleryShopPage implements OnInit {
   async onUrlCallback(event) {
     this.loading.presentLoadingWithOptions()
     try {
+      this.shop = await JSON.parse(window.localStorage.getItem(environment.apiURL + "@shopme"));
+      alert("zzzzz " + JSON.stringify(this.shop))
       this.imageGallery = await event;
-      this.updateGalleryShop()
+      alert('ss ' + this.imageGallery)
+      await this.updateGalleryShop()
       this.loading.dismissOnPageChange()
     } catch (error) {
       this.loading.dismissOnPageChange()
@@ -43,13 +50,11 @@ export class GalleryShopPage implements OnInit {
   }
   async  updateGalleryShop() {
     try {
-      this.shop = {
-        imagereview: this.imageGallery
-      }
+      this.shop.imagereview = this.imageGallery
       let res: any = await this.shopsService.updateShop(this.shop._id, this.shop);
-      alert(res);
+      alert(JSON.stringify(res));
     } catch (error) {
-      alert(error);
+      alert(JSON.stringify(error));
     }
 
   }
