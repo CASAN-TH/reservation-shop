@@ -1,6 +1,7 @@
 import { ShopsService } from './../../services/shops/shops.service';
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-info-shop',
@@ -9,28 +10,35 @@ import { NavController } from '@ionic/angular';
 })
 export class InfoShopPage implements OnInit {
   image: any = "https://res.cloudinary.com/dyiuidzsc/image/upload/v1550205621/Mookata/no-img-shop.jpg";
-  dataShop = {
-    name: '',
-    image: this.image,
-    descreiption: {
-      title: '',
-      detail: ''
-    },
-    starttime: '',
-    endtime: '',
-    house_no: '',
-    village: '',
-    subdistrict: '',
-    district: '',
-    province: '',
-    postalcode: ''
-  }
+  detailShop: any;
+  dataShop: any;
   constructor(public navCtrl: NavController,
     public shopsService: ShopsService
   ) { }
 
-  ngOnInit() {
+  async  ngOnInit() {
     console.log(this.dataShop);
+    this.detailShop = await JSON.parse(window.localStorage.getItem(environment.apiURL + "@shopme"));
+    console.log(this.detailShop);
+    if (this.detailShop) {
+      this.dataShop = {
+        name: this.detailShop.name ? this.detailShop.name : '',
+        image: this.detailShop.image ? this.detailShop.image : this.image,
+        descreiption: {
+          title: this.detailShop.descreiption.title ? this.detailShop.descreiption.title : '',
+          detail: this.detailShop.descreiption.detail ? this.detailShop.descreiption.detail : ''
+        },
+        starttime: this.detailShop.starttime ? this.detailShop.starttime : '',
+        endtime: this.detailShop.endtime ? this.detailShop.endtime : '',
+        house_no: this.detailShop.house_no ? this.detailShop.house_no : '',
+        village: this.detailShop.village ? this.detailShop.village : '',
+        subdistrict: this.detailShop.subdistrict ? this.detailShop.subdistrict : '',
+        district: this.detailShop.district ? this.detailShop.district : '',
+        province: this.detailShop.province ? this.detailShop.province : '',
+        postalcode: this.detailShop.postalcode ? this.detailShop.postalcode : ''
+      }
+    }
+
   }
   back() {
     this.navCtrl.goBack();
@@ -38,11 +46,21 @@ export class InfoShopPage implements OnInit {
   onUrlCallback(e) {
     this.image = e;
   }
-  confirm() {
+  async confirm() {
+    try {
 
-    // this.dataShop.starttime = '2019-01-29T' + this.dataShop.starttime + ':00.000Z';
-    // this.dataShop.endtime = '2019-01-29T' + this.dataShop.endtime + ':00.000Z';
-    // console.log(this.dataShop);
-    this.shopsService.createShop(this.dataShop);
+      if (this.detailShop) {
+        let res: any = await this.shopsService.updateShop(this.dataShop);
+      } else {
+        let res: any = await this.shopsService.createShop(this.dataShop);
+        console.log(res);
+        window.localStorage.setItem(environment.apiURL + '@shopme', JSON.stringify(res.data));
+        console.log(JSON.parse(window.localStorage.getItem(environment.apiURL + "@shopme")));
+      }
+
+    } catch (error) {
+
+    }
+
   }
 }

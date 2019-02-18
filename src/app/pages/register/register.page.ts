@@ -42,18 +42,18 @@ export class RegisterPage implements OnInit {
     try {
       await this.loading.presentLoadingWithOptions();
       const oneSignal: any = JSON.parse(window.localStorage.getItem(environment.apiURL + '@oneSignal'));
-      alert(JSON.stringify(oneSignal));
+      // alert(JSON.stringify(oneSignal));
       let body;
+      body = {
+        username: this.username,
+        password: this.password,
+        firstname: this.firstname,
+        lastname: this.lastname,
+        email: this.email,
+        profileImageURL: this.image
+      }
       if (oneSignal && oneSignal.userId) {
-        body = {
-          username: this.username,
-          password: this.password,
-          firstname: this.firstname,
-          lastname: this.lastname,
-          email: this.email,
-          profileImageURL: this.image,
-          ref1: oneSignal.userId,
-        }
+        body.ref1 = oneSignal.userId
       }
 
       console.log(body);
