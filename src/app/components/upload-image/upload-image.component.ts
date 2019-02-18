@@ -13,8 +13,9 @@ import * as firebase from 'firebase';
 export class UploadImageComponent implements OnInit {
   @Output() url: EventEmitter<any> = new EventEmitter<any>();
   @Input() qulity: any;
+  image = [];
   // @Output() imageFirebase: EventEmitter<any> = new EventEmitter<any>();
-  image: any;
+  // image: any;
   constructor(
     private actionSheetController: ActionSheetController,
     private imagePicker: ImagePicker,
@@ -66,7 +67,11 @@ export class UploadImageComponent implements OnInit {
         this.uploadImage(fileUri).then((uploadImageData) => {
           // this.imageFirebase.emit(uploadImageData)
           // alert(uploadImageData)
-          this.url.emit(uploadImageData);
+          
+          this.image.push(uploadImageData)
+          if (this.image.length === results.length) {
+            this.url.emit(this.image);
+          }
           // alert('upload success' + JSON.stringify(uploadImageData));
         }, (uploadImageError) => {
           console.log(uploadImageError);
@@ -76,6 +81,7 @@ export class UploadImageComponent implements OnInit {
     }, (err) => {
       alert(err);
     });
+
   }
 
   onCamera() {

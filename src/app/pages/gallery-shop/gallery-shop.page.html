@@ -32,8 +32,8 @@
           </app-upload-image>
         </ion-col>
         <ion-col size="6" size-md="4" size-xl="3" *ngFor="let image of imageGallery">
-          <div class="image-container"
-            [style.background-image]="'image'">
+          <div class="image-container">
+          <img  src="{{image}}" alt="">
           </div>
         </ion-col>
       </ion-row>
@@ -49,7 +49,5 @@
     </ion-row>
   </ion-grid>
   </div> -->
-
-  {{imageGallery || json}}
 
 </ion-content>

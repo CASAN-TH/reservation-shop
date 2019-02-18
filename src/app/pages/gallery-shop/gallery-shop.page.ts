@@ -11,11 +11,12 @@ export class GalleryShopPage implements OnInit {
 
   galleryType = 'regular';
   qty: any = 10;
-  imageGallery: any=[];
+  imageGallery:any;
   constructor(
     public navCtrl: NavController,
     public loading: LoadingService,
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
   }
@@ -26,8 +27,16 @@ export class GalleryShopPage implements OnInit {
 
   }
 
-  async onUrlCallback(event) {
+    async onUrlCallback(event) {
+    // this.loading.presentLoadingWithOptions()
+    try {
     this.imageGallery = await event;
-    alert(JSON.stringify(this.imageGallery))
+    // this.loading.dismissOnPageChange()
+    } catch (error) {
+    // this.loading.dismissOnPageChange()
+      
+    }
   }
+
+
 }
