@@ -59,7 +59,8 @@ export class InfoShopPage implements OnInit {
     try {
 
       if (this.haveShop) {
-        let res: any = await this.shopsService.updateShop(this.detailShop._id , this.dataShop);
+        let res: any = await this.shopsService.updateShop(this.detailShop._id, this.dataShop);
+        window.localStorage.setItem(environment.apiURL + '@shopme', JSON.stringify(res.data));
       } else {
         this.dataShop.user_id = this.user._id;
         let res: any = await this.shopsService.createShop(this.dataShop);

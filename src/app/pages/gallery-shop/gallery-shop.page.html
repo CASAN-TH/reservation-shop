@@ -24,7 +24,7 @@
 
     <ion-grid *ngSwitchCase="'regular'">
       <ion-row>
-        <ion-col size="6" size-md="4" size-xl="3" align-self-center text-align-center (click)="uploadImage()">
+        <ion-col size="6" size-md="4" size-xl="3" align-self-center text-align-center>
           <app-upload-image (url)="onUrlCallback($event)" [qulity]="qty">
             <p style="font-size: 14vw; margin: 0%; text-align: center; ">
               +
