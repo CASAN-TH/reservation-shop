@@ -28,56 +28,56 @@
   <ion-list style="margin-top: 25px !important;">
     <ion-item>
       <ion-label position="fixed">ชื่อร้าน</ion-label>
-      <ion-input [(ngModel)]="dataShop.name"></ion-input>
+      <ion-input [(ngModel)]="dataShop.name"  placeholder="กรุณากรอกชื่อร้าน"></ion-input>
 
     </ion-item>
     <ion-item>
       <ion-label position="fixed">เวลาเปิดร้าน</ion-label>
-      <ion-datetime [(ngModel)]="dataShop.starttime" display-format="HH:mm"></ion-datetime>
+      <ion-datetime [(ngModel)]="dataShop.starttime" display-format="HH:mm" placeholder="กรุณากรอกเวลาเปิดร้าน"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label position="fixed">เวลาปิดร้าน</ion-label>
-      <ion-datetime [(ngModel)]="dataShop.endtime" display-format="HH:mm"></ion-datetime>
+      <ion-datetime [(ngModel)]="dataShop.endtime" placeholder="กรุณากรอกเวลาปิดร้าน" display-format="HH:mm"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label position="fixed">บ้านเลขที่</ion-label>
-      <ion-input [(ngModel)]="dataShop.house_no">
+      <ion-input [(ngModel)]="dataShop.house_no" placeholder="กรุณากรอกบ้านเลขที่">
       </ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="fixed">หมู่บ้าน</ion-label>
-      <ion-input [(ngModel)]="dataShop.village">
+      <ion-input [(ngModel)]="dataShop.village" placeholder="กรุณากรอกหมู่บ้าน">
       </ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="fixed">ตำบล</ion-label>
-      <ion-input [(ngModel)]="dataShop.subdistrict">
+      <ion-input [(ngModel)]="dataShop.subdistrict" placeholder="กรุณากรอกตำบล">
       </ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="fixed">อำเภอ</ion-label>
-      <ion-input [(ngModel)]="dataShop.district">
+      <ion-input [(ngModel)]="dataShop.district" placeholder="กรุณากรอกอำเภอ">
       </ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="fixed">จังหวัด</ion-label>
-      <ion-input [(ngModel)]="dataShop.province">
+      <ion-input [(ngModel)]="dataShop.province" placeholder="กรุณากรอกจังหวัด">
       </ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="fixed">รหัสไปรษณีย์</ion-label>
-      <ion-input [(ngModel)]="dataShop.postalcode">
+      <ion-input [(ngModel)]="dataShop.postalcode" placeholder="กรุณากรอกรหัสไปรษณีย์">
       </ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="fixed">หัวข้อรายละเอียดร้าน</ion-label>
-      <ion-input [(ngModel)]="dataShop.descreiption.title">
+      <ion-input [(ngModel)]="dataShop.descreiption.title" placeholder="กรุณากรอกหัวข้อรายละเอียดร้าน">
       </ion-input>
     </ion-item>
     <ion-item lines="none">
       <ion-label position="fixed">รายละเอียดของร้าน</ion-label>
-      <ion-textarea [(ngModel)]="dataShop.descreiption.detail"></ion-textarea>
+      <ion-textarea [(ngModel)]="dataShop.descreiption.detail" placeholder="กรุณากรอกรายละเอียดของร้าน"></ion-textarea>
     </ion-item>
   </ion-list>
 

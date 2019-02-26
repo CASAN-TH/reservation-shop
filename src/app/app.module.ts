@@ -13,6 +13,7 @@ import { Camera } from '@ionic-native/camera/ngx';
 import { HttpClientModule } from '@angular/common/http';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { SiginPageModule } from './pages/sigin/sigin.module';
+import { RegisterPageModule } from './pages/register/register.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +23,8 @@ import { SiginPageModule } from './pages/sigin/sigin.module';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    SiginPageModule
+    SiginPageModule,
+    RegisterPageModule
   ],
   providers: [
     StatusBar,

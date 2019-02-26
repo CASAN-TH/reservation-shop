@@ -11,7 +11,7 @@ import { SiginPage } from '../pages/sigin/sigin.page';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
-
+  shopme: any;
   user: any;
   constructor(
     public navCtrl: NavController,
@@ -26,7 +26,8 @@ export class Tab2Page {
 
 
   ionViewWillEnter() {
-    this.user = JSON.parse(window.localStorage.getItem(environment.apiURL + '@user'))
+    this.shopme = JSON.parse(window.localStorage.getItem(environment.apiURL + '@shopme'));
+    this.user = JSON.parse(window.localStorage.getItem(environment.apiURL + '@user'));
     let resToken: any = window.localStorage.getItem(environment.apiURL + '@token');
     console.log(this.user);
     console.log('zzz', this.user)
@@ -44,11 +45,14 @@ export class Tab2Page {
     // }
   }
 
-  logout() {
+  async logout() {
+    this.loading.presentLoadingWithOptions();
     window.localStorage.clear()
     this.loading.presentToastWithOptions('ออกจากระบบสำเร็จ');
     setTimeout(() => {
       this.ionViewWillEnter();
+      this.loading.dismissOnPageChange();
+
     }, 1400);
   }
 
@@ -63,7 +67,11 @@ export class Tab2Page {
     toast.present();
   }
   openGalleryImage() {
-    this.navCtrl.navigateForward('gallery-shop');
+    if (this.shopme) {
+      this.navCtrl.navigateForward('gallery-shop');
+    } else {
+      this.loading.presentToastWithOptions('กรุณาสร้างร้าน');
+    }
   }
 
   async clickLogin() {
@@ -82,7 +90,11 @@ export class Tab2Page {
     this.navCtrl.navigateForward('info-shop');
   }
   editPersone() {
-    this.navCtrl.navigateForward('persone-edit');
+    if (this.shopme) {
+      this.navCtrl.navigateForward('persone-edit');
+    } else {
+      this.loading.presentToastWithOptions('กรุณาสร้างร้าน');
+    }
   }
   async onUrlCallback(e) {
     this.loading.presentLoadingWithOptions()

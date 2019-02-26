@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
-import { NavController, Platform } from '@ionic/angular';
+import { NavController, Platform, ModalController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ShopsService } from '../../services/shops/shops.service';
 import { LoadingService } from 'src/app/services/loading/loading.service';
@@ -20,7 +20,9 @@ export class RegisterPage implements OnInit {
     public authService: AuthService,
     private shopService: ShopsService,
     public loading: LoadingService,
-    private oneSignal: OneSignal
+    private oneSignal: OneSignal,
+    public modalController: ModalController
+
   ) { }
 
   username: any = '';
@@ -63,7 +65,12 @@ export class RegisterPage implements OnInit {
       window.localStorage.setItem(environment.apiURL + '@token', res.token);
       await this.loading.dismissOnPageChange();
       this.getMe();
-      this.navCtrl.navigateForward("");
+      // this.navCtrl.navigateForward("");
+      this.modalController.dismiss({
+        'result': 'exit'
+      }
+      );
+
       this.loading.dismissOnPageChange();
     } catch (error) {
       this.loading.dismissOnPageChange();
@@ -100,14 +107,19 @@ export class RegisterPage implements OnInit {
       console.log(resp)
       this.user_id = resp._id;
       let res: any = await this.shopService.getShopById(this.user_id);
-      window.localStorage.setItem(environment.apiURL + '@shopme', JSON.stringify(res.data[0]));
+      if (res && res.data && res.data.length > 0) {
+        window.localStorage.setItem(environment.apiURL + '@shopme', JSON.stringify(res.data[0]));
+      }
       console.log(res)
     } catch (error) {
       console.log(error)
     }
   }
 
-
+  exit() {
+    this.loading.presentLoadingWithOptions();
+    this.modalController.dismiss({ 'result': 'exit' });
+  }
 
   oneSignalConfig() {
     this.oneSignal.startInit('38dc3697-091e-45b0-bdda-38b302b31e63', 'mhookata');

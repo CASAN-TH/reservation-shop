@@ -5,6 +5,7 @@ import { environment } from '../../../environments/environment';
 import { ShopsService } from 'src/app/services/shops/shops.service';
 import { LoadingService } from 'src/app/services/loading/loading.service';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
+import { RegisterPage } from '../register/register.page';
 
 
 @Component({
@@ -83,13 +84,29 @@ export class SiginPage implements OnInit {
     console.log(resp)
     this.user_id = resp._id;
     let res: any = await this.shopService.getShopById(this.user_id);
-    window.localStorage.setItem(environment.apiURL + '@shopme', JSON.stringify(res.data[0]));
+    if(res && res.data && res.data.length > 0){
+        window.localStorage.setItem(environment.apiURL + '@shopme', JSON.stringify(res.data[0]));
+    }
     console.log(res)
+  
 
   }
-  clickRegister() {
-    this.modalController.dismiss();
-    this.navCtrl.navigateForward('register');
+  async  clickRegister() {
+    const modal = await this.modalController.create({
+      component: RegisterPage,
+      componentProps: { value: 123 }
+    });
+    await modal.present();
+    const data = await modal.onDidDismiss();
+    console.log(data);
+    if (data) {
+      this.modalController.dismiss();
+    }
+    setTimeout(() => {
+      this.loading.dismissOnPageChange();
+    }, 500);
+    //   this.modalController.dismiss();
+    //   this.navCtrl.navigateForward('register');
   }
 
   oneSignalConfig() {

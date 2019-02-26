@@ -1,7 +1,8 @@
 <ion-content>
   <!-- <app-queue-list></app-queue-list> -->
-  <ion-buttons (click)="back()" class="icon-back ">
-    <ion-icon style="font-size: 30px; color: #FF6969;" slot="start" name="arrow-back"></ion-icon>
+  <ion-buttons (click)="exit()" class="icon-back ">
+    <ion-icon style="font-size: 30px; color: #FF6969;" name="close-circle-outline"></ion-icon>
+    <!-- <ion-icon style="font-size: 30px; color: #FF6969;" slot="start" name="arrow-back"></ion-icon> -->
   </ion-buttons>
 
   <img *ngIf="!image" style="border-radius: 50%; margin-top: 30px; width: 45vw; height: 45vw; " class="center"
