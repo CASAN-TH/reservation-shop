@@ -17,14 +17,17 @@
 
   <ion-card>
     <ion-row>
-      <ion-col size="8" *ngIf="namecheck===false" >
-        <ion-item >
-          klkkkkkk
+      <ion-col size="8" *ngIf="namecheck===false">
+        <ion-item *ngIf="!shopData && !shopData.peoples">
+         กรุณากรอกจำนวนที่นั่ง
+        </ion-item>
+        <ion-item *ngIf="shopData && shopData.peoples">
+          {{shopData.peoples}}
         </ion-item>
       </ion-col>
-      <ion-col size="8" *ngIf="namecheck===true" >
-        <ion-item >
-          <ion-input expand="กรุณากรอกจำนวนที่นั่งที่เหลือ">กรุณากรอกจำนวนที่นั่งที่เหลือ</ion-input>
+      <ion-col size="8" *ngIf="namecheck===true">
+        <ion-item>
+          <ion-input expand="กรุณากรอกจำนวนที่นั่งที่เหลือ" [(ngModel)]="shopData.peoples"></ion-input>
         </ion-item>
       </ion-col>
       <ion-col size="2">
@@ -40,14 +43,14 @@
   <ion-row class="mg-top">
     <ion-col size="1">
     </ion-col>
-    <ion-col size="5">
-      <ion-button mode="md" class="fs" expand="block" fill="outline" >บันทึก</ion-button>
+    <ion-col size="10">
+      <ion-button mode="md" class="fs" expand="block" fill="outline" (click)='save()'>บันทึก</ion-button>
 
     </ion-col>
-    <ion-col size="5">
+    <!-- <ion-col size="5">
       <ion-button mode="md" class="fs" color="danger" expand="block" fill="outline" (click)="clickCancel()">ยกเลิก
       </ion-button>
-    </ion-col>
+    </ion-col> -->
     <ion-col size="1">
 
     </ion-col>

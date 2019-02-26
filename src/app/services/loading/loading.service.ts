@@ -33,5 +33,14 @@ export class LoadingService {
     });
     toast.present();
   }
- 
+  async presentToastSuccess(Success) {
+    const toast = await this.toastController.create({
+      message: Success,
+      duration: 4000,
+      position: 'bottom',
+      mode: 'ios',
+      color: 'success'
+    });
+    toast.present();
+  }
 }
