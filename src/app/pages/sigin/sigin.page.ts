@@ -99,7 +99,7 @@ export class SiginPage implements OnInit {
     await modal.present();
     const data = await modal.onDidDismiss();
     console.log(data);
-    if (data) {
+    if (data.data === 'exit') {
       this.modalController.dismiss();
     }
     setTimeout(() => {

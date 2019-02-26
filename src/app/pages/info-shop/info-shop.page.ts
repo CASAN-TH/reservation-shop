@@ -1,3 +1,4 @@
+import { LoadingService } from './../../services/loading/loading.service';
 import { ShopsService } from './../../services/shops/shops.service';
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
@@ -31,8 +32,10 @@ export class InfoShopPage implements OnInit {
   detailShop: any;
   haveShop: any;
 
-  constructor(public navCtrl: NavController,
-    public shopsService: ShopsService
+  constructor(
+    public navCtrl: NavController,
+    public shopsService: ShopsService,
+    public loading: LoadingService
   ) { }
 
   async ngOnInit() {
@@ -43,6 +46,7 @@ export class InfoShopPage implements OnInit {
     let resShop: any = await this.shopsService.getShopById(this.user._id);
     this.detailShop = resShop.data[0];
     console.log(this.detailShop);
+
     this.haveShop = await JSON.parse(window.localStorage.getItem(environment.apiURL + "@shopme"));
     if (this.detailShop) {
       this.getShop()
@@ -74,7 +78,7 @@ export class InfoShopPage implements OnInit {
     }
 
   }
-  getShop() {
+  async getShop() {
     this.dataShop = {
       name: this.detailShop.name,
       image: this.detailShop.image,
@@ -92,5 +96,6 @@ export class InfoShopPage implements OnInit {
       postalcode: this.detailShop.postalcode,
       user_id: this.detailShop.user_id
     }
+
   }
 }
