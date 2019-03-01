@@ -50,13 +50,14 @@ export class AppComponent {
   }
 
   initializeApp() {
-    if (cordova.platformId == 'android') {
+    if (this.platform.is('cordova')) {
       this.platform.ready().then(() => {
-        this.statusBar.styleLightContent();
+        this.statusBar.styleDefault();
+        this.statusBar.backgroundColorByHexString('#f1f1f1')
         this.splashScreen.hide();
       });
 
-    } else {
+    } else if (this.platform.is('ios')) {
       this.platform.ready().then(() => {
         this.statusBar.styleDefault();
         this.splashScreen.hide();
