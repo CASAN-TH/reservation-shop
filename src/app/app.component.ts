@@ -35,47 +35,57 @@ export class AppComponent {
     //   projectId: 'rabu-love-love',
     //   storageBucket: 'rabu-love-love.appspot.com',
     //   messagingSenderId: '69927117585'
-      // apiKey: 'AIzaSyD8CpXd8ZBQkhis7KGWEhmNrd1Le9EQpxQ',
-      // authDomain: 'moota-ca955.firebaseapp.com',
-      // databaseURL: 'https://moota-ca955.firebaseio.com',
-      // projectId: 'moota-ca955',
-      // storageBucket: 'moota-ca955.appspot.com',
-      // messagingSenderId: '10519151021'
+    // apiKey: 'AIzaSyD8CpXd8ZBQkhis7KGWEhmNrd1Le9EQpxQ',
+    // authDomain: 'moota-ca955.firebaseapp.com',
+    // databaseURL: 'https://moota-ca955.firebaseio.com',
+    // projectId: 'moota-ca955',
+    // storageBucket: 'moota-ca955.appspot.com',
+    // messagingSenderId: '10519151021'
     // };
     firebase.initializeApp(config);
-    
+
     if (platform.is('cordova')) {
       this.oneSignalConfig();
-     }
+    }
   }
 
   initializeApp() {
-    this.platform.ready().then(() => {
-      this.statusBar.styleLightContent();
-      this.splashScreen.hide();
-    });
+    if (cordova.platformId == 'android') {
+      this.platform.ready().then(() => {
+        this.statusBar.styleLightContent();
+        this.splashScreen.hide();
+      });
+
+    } else {
+      this.platform.ready().then(() => {
+        this.statusBar.styleDefault();
+        this.splashScreen.hide();
+      });
+    }
+
+
   }
 
   oneSignalConfig() {
     this.oneSignal.startInit('38dc3697-091e-45b0-bdda-38b302b31e63', 'mhookata');
- 
-     this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
- 
-     this.oneSignal.handleNotificationReceived().subscribe(() => {
-       // do something when notification is received
-     });
- 
-    this.oneSignal.handleNotificationOpened().subscribe(() => {
-       // do something when a notification is opened
+
+    this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
+
+    this.oneSignal.handleNotificationReceived().subscribe(() => {
+      // do something when notification is received
     });
- 
+
+    this.oneSignal.handleNotificationOpened().subscribe(() => {
+      // do something when a notification is opened
+    });
+
     this.oneSignal.endInit();
- 
+
     this.oneSignal.getIds().then(data => {
       window.localStorage.setItem(environment.apiURL + '@oneSignal', JSON.stringify(data));
     }).catch(error => {
       throw error;
-     });
+    });
   }
 
 }
